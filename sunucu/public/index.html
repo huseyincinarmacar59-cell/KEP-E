@@ -2,7 +2,14 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#d9572b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Kepçe">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>Kepçe – Türk Mutfağı Takip (Demo)</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -13,7 +20,7 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'Nunito',system-ui,sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
-  .app{max-width:480px;margin:0 auto;padding:18px 16px 96px}
+  .app{max-width:480px;margin:0 auto;padding:calc(18px + env(safe-area-inset-top)) calc(16px + env(safe-area-inset-right)) calc(96px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left))}
   header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
   .logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:24px}
   .logo .ic{width:40px;height:40px;border-radius:12px;background:var(--accent);display:grid;place-items:center;color:#fff;font-size:22px}
@@ -74,7 +81,7 @@
   /* sheet */
   .overlay{position:fixed;inset:0;background:rgba(30,20,10,.45);display:none;align-items:flex-end;justify-content:center;z-index:50}
   .overlay.show{display:flex}
-  .sheet{background:#fff;width:100%;max-width:480px;border-radius:24px 24px 0 0;padding:22px 18px 28px;animation:up .2s ease;max-height:92vh;overflow-y:auto}
+  .sheet{background:#fff;width:100%;max-width:480px;border-radius:24px 24px 0 0;padding:22px 18px calc(28px + env(safe-area-inset-bottom));animation:up .2s ease;max-height:92vh;overflow-y:auto}
   @keyframes up{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
   .qty{display:flex;align-items:center;justify-content:center;gap:18px;margin:16px 0}
   .qty button,.mini button{width:46px;height:46px;border-radius:50%;border:2px solid var(--line);background:#fff;font-size:22px;font-weight:800;cursor:pointer;color:var(--ink)}
@@ -116,7 +123,7 @@
   /* onboarding */
   .ob{position:fixed;inset:0;background:var(--bg);z-index:70;overflow-y:auto;display:none}
   .ob.show{display:block}
-  .ob .in{max-width:480px;margin:0 auto;padding:28px 18px 40px}
+  .ob .in{max-width:480px;margin:0 auto;padding:calc(28px + env(safe-area-inset-top)) 18px calc(40px + env(safe-area-inset-bottom))}
   .field{margin-bottom:14px}
   .field label{display:block;font-weight:800;font-size:14px;margin-bottom:6px}
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -127,7 +134,7 @@
   /* nav */
   nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:center;z-index:40}
   nav .in{display:flex;max-width:480px;width:100%}
-  nav button{flex:1;background:none;border:none;padding:10px 0 14px;font:inherit;font-size:11px;font-weight:700;color:var(--muted);cursor:pointer}
+  nav button{flex:1;background:none;border:none;padding:10px 0 calc(14px + env(safe-area-inset-bottom));font:inherit;font-size:11px;font-weight:700;color:var(--muted);cursor:pointer}
   nav button .e{display:block;font-size:22px;margin-bottom:2px}
   nav button.on{color:var(--accent)}
   .view{display:none}.view.on{display:block}
@@ -172,6 +179,10 @@
 
   <!-- BUGÜN -->
   <section class="view on" id="v-home">
+    <div class="card" id="phoneCard" style="display:none;cursor:pointer;background:#fff6f0;border:2px solid var(--accent2)">
+      <div style="display:flex;align-items:center;gap:12px"><span style="font-size:32px">📱</span>
+      <div style="flex:1"><b>Telefonuna kur</b><div class="muted">QR kodu telefonunla okut, ana ekrana ekle</div></div><span style="font-size:20px">›</span></div>
+    </div>
     <div class="card hero" id="hero"></div>
 
     <div class="card">
@@ -279,6 +290,19 @@
   <div style="text-align:center;font-size:18px;margin-bottom:18px">≈ <span class="kcal g" id="ssKcal"></span> kcal yakılır</div>
   <button class="btn" id="sAdd" style="background:var(--green)">Kaydet</button>
   <button class="btn ghost" id="sCancel">Vazgeç</button>
+</div></div>
+
+<!-- Telefona kur -->
+<div class="overlay" id="ovQ"><div class="sheet">
+  <h2 style="text-align:center">📱 Kepçe'yi telefonuna kur</h2>
+  <p class="muted" style="text-align:center;margin-bottom:12px">Telefonun bu bilgisayarla <b>aynı Wi-Fi</b>'de olmalı.</p>
+  <div id="qrBox" style="display:flex;justify-content:center;padding:14px;background:#fff;border-radius:16px;border:2px solid var(--line)"></div>
+  <p style="text-align:center;font-weight:800;margin:10px 0" id="qrUrl"></p>
+  <div style="background:var(--bg);border-radius:14px;padding:12px;font-size:14px;line-height:1.6;margin-bottom:12px">
+    <b>🍎 iPhone:</b> Kamerayla QR'ı okut → Safari'de aç → alttaki <b>Paylaş</b> (□↑) → <b>Ana Ekrana Ekle</b><br>
+    <b>🤖 Android:</b> QR'ı okut → Chrome'da aç → sağ üstteki <b>⋮</b> → <b>Ana ekrana ekle</b>
+  </div>
+  <button class="btn ghost" onclick="document.getElementById('ovQ').classList.remove('show')">Kapat</button>
 </div></div>
 
 <!-- Foto analiz -->
@@ -581,6 +605,24 @@ $("pSheet").onclick=e=>{
   renderPhoto();
 };
 
+// ---------- telefona kur (sadece bilgisayarda, yerel sunucudayken) ----------
+async function initPhone(){
+  if(location.hostname!=="localhost"&&location.hostname!=="127.0.0.1") return;
+  let adres=[];
+  try{const r=await fetch("adres",{cache:"no-store"});if(r.ok)adres=(await r.json()).adresler||[];}catch(e){}
+  if(!adres.length) return;
+  $("phoneCard").style.display="block";
+  $("phoneCard").onclick=()=>{
+    const url=adres[0];$("qrUrl").textContent=url;$("ovQ").classList.add("show");
+    const ciz=()=>{$("qrBox").innerHTML="";try{new QRCode($("qrBox"),{text:url,width:200,height:200});}catch(e){$("qrBox").textContent=url;}};
+    if(window.QRCode) return ciz();
+    const sc=document.createElement("script");sc.src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js";
+    sc.onload=ciz;sc.onerror=()=>{$("qrBox").innerHTML='<div class="muted" style="text-align:center">QR yüklenemedi (internet yok).<br>Adresi telefonun tarayıcısına elle yaz.</div>'};
+    document.head.appendChild(sc);
+  };
+}
+initPhone();
+
 // nav
 document.querySelector("nav").onclick=e=>{const b=e.target.closest("button");if(!b)return;
   document.querySelectorAll("nav button").forEach(x=>x.classList.toggle("on",x===b));
@@ -588,6 +630,10 @@ document.querySelector("nav").onclick=e=>{const b=e.target.closest("button");if(
 
 renderFoods();
 if(P) render(); else openOb();
+// Telefonda uygulama gibi çalışsın (sadece localhost / https'te aktif olur)
+if("serviceWorker" in navigator && (location.protocol==="https:"||location.hostname==="localhost") && !location.hostname.endsWith("claude.ai")){
+  try{navigator.serviceWorker.register("sw.js").catch(()=>{});}catch(e){}
+}
 </script>
 </body>
 </html>

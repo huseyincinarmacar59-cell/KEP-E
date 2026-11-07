@@ -41,10 +41,20 @@ Cevap veriyorsa yapay zekân çalışıyor demektir. 🎉
       ✅ Ollama ve model hazır.
    ```
 
-## 5. Adım — Kullan!
-- **Bilgisayarda:** Tarayıcıda `http://localhost:3000` adresini aç.
-- **Telefonda:** Telefon aynı Wi-Fi'ye bağlı olsun, pencerede yazan `http://192.168.1.xx:3000` adresini aç.
-- Ekle sekmesindeki 📸 butonunun altında **"Yerel yapay zekâ hazır"** yazmalı. Fotoğraf çek ve dene!
+## 5. Adım — Bilgisayarda aç
+Tarayıcıda `http://localhost:3000` adresini aç. Ekle sekmesindeki 📸 butonunun altında
+**"Yerel yapay zekâ hazır"** yazmalı.
+
+## 6. Adım — Telefonuna uygulama olarak kur 📱
+1. Bilgisayardaki Kepçe'de, Bugün ekranının en üstündeki **"📱 Telefonuna kur"** kartına bas. QR kod çıkar.
+2. Telefonun bilgisayarla **aynı Wi-Fi**'de olsun, kamerayla QR'ı okut.
+3. **iPhone:** Safari'de açılır → alttaki **Paylaş** (□↑) → **Ana Ekrana Ekle** → Ekle.
+   **Android:** Chrome'da açılır → sağ üstteki **⋮** → **Ana ekrana ekle**.
+4. Ana ekranında 🥄 Kepçe ikonu çıkar. Bastığında normal bir uygulama gibi tam ekran açılır!
+
+> 💡 Fotoğraf analizi için bilgisayarın açık ve `baslat.bat` penceresi çalışıyor olmalı.
+> Yemek, su ve spor kayıtları telefonunda saklanır.
+> Bilgisayarının yerel IP adresi değişirse (modem yeniden başlarsa), QR'ı tekrar okutup yeniden eklemen gerekebilir.
 
 > ⏱️ Ekran kartın yoksa bir fotoğrafın analizi 10-60 saniye sürebilir. Bu normal.
 > İlk fotoğraf en yavaşıdır, çünkü model o sırada belleğe yükleniyor.

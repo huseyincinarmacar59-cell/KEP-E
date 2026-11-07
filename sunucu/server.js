@@ -16,7 +16,22 @@ const MODEL = process.env.KEPCE_MODEL || "gemma3:4b"; // kullanılacak yapay zek
 const MAX_FOTO = 8 * 1024 * 1024;                     // en fazla 8 MB fotoğraf
 
 const TALIMAT = path.join(__dirname, "abi-talimati.txt");
-const SAYFA = path.join(__dirname, "public", "index.html");
+const PUBLIC = path.join(__dirname, "public");
+// Telefona servis edilen dosyalar (sadece bunlar, güvenlik için liste)
+const DOSYALAR = {
+  "/": ["index.html", "text/html; charset=utf-8"],
+  "/index.html": ["index.html", "text/html; charset=utf-8"],
+  "/manifest.webmanifest": ["manifest.webmanifest", "application/manifest+json"],
+  "/sw.js": ["sw.js", "text/javascript"],
+  "/icon-192.png": ["icon-192.png", "image/png"],
+  "/icon-512.png": ["icon-512.png", "image/png"],
+  "/icon-maskable-512.png": ["icon-maskable-512.png", "image/png"],
+  "/apple-touch-icon.png": ["apple-touch-icon.png", "image/png"],
+};
+function yerelAdresler() {
+  return Object.values(os.networkInterfaces()).flat()
+    .filter(a => a && a.family === "IPv4" && !a.internal).map(a => "http://" + a.address + ":" + PORT);
+}
 
 // Talimat dosyasını her seferinde yeniden okuyoruz: düzenlersen hemen etkili olur.
 function talimatOku() {
@@ -71,16 +86,22 @@ function gonder(res, kod, tip, govde) {
 }
 
 const sunucu = http.createServer((req, res) => {
-  // 1) Uygulamanın kendisi
-  if (req.method === "GET" && (req.url === "/" || req.url === "/index.html")) {
-    return gonder(res, 200, "text/html; charset=utf-8", fs.readFileSync(SAYFA));
+  const yol = req.url.split("?")[0];
+  // 1) Uygulamanın dosyaları
+  if (req.method === "GET" && DOSYALAR[yol]) {
+    const [ad, tip] = DOSYALAR[yol];
+    return gonder(res, 200, tip, fs.readFileSync(path.join(PUBLIC, ad)));
+  }
+  // Telefon bağlantı adresleri (QR kod için)
+  if (req.method === "GET" && yol === "/adres") {
+    return gonder(res, 200, "application/json", JSON.stringify({ adresler: yerelAdresler() }));
   }
   // 2) Uygulama "sunucu açık mı?" diye sorar
-  if (req.method === "GET" && req.url === "/saglik") {
+  if (req.method === "GET" && yol === "/saglik") {
     return gonder(res, 200, "application/json", JSON.stringify({ ok: true, model: MODEL }));
   }
   // 3) Fotoğraf analizi
-  if (req.method === "POST" && req.url === "/analiz") {
+  if (req.method === "POST" && yol === "/analiz") {
     const parcalar = []; let boyut = 0;
     req.on("data", p => {
       boyut += p.length;
@@ -107,9 +128,8 @@ const sunucu = http.createServer((req, res) => {
 sunucu.listen(PORT, "0.0.0.0", async () => {
   console.log("\n🥄 Kepçe sunucusu çalışıyor!\n");
   console.log("   Bu bilgisayardan:  http://localhost:" + PORT);
-  for (const ag of Object.values(os.networkInterfaces()).flat()) {
-    if (ag && ag.family === "IPv4" && !ag.internal) console.log("   Telefondan:        http://" + ag.address + ":" + PORT);
-  }
+  for (const a of yerelAdresler()) console.log("   Telefondan:        " + a);
+  console.log("   (Bilgisayarda açınca Bugün ekranında telefon için QR kod çıkar)");
   console.log("\n   Yapay zekâ modeli: " + MODEL);
   try {
     const r = await fetch(OLLAMA + "/api/tags");
