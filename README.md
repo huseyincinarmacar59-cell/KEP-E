@@ -2,7 +2,7 @@
 
 Türk mutfağına özel, ev ölçüleriyle (kepçe, dilim, adet) çalışan sağlıklı yaşam takip uygulaması — demo.
 
-**Canlı:** https://huseyincinarmacar59-cell.github.io/kep-e/
+**Canlı:** https://huseyincinarmacar59-cell.github.io/KEP-E/
 
 ## Özellikler
 - İlk girişte boy, kilo, yaş ve hedefe göre kişisel plan
