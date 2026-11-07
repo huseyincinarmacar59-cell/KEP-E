@@ -1,0 +1,121 @@
+# TÜRK YEMEKLERİ — tipik ev/esnaf tarifine göre 100 g başına YAKLAŞIK değerler
+# ad | kategori | kcal,protein,karbonhidrat,yağ | porsiyonlar | diğer adlar
+# --- ÇORBALAR ---
+Mercimek çorbası|Çorba|60,3.4,8.5,1.6|1 kase:250;1 kepçe:180;1 küçük kase:180;1 su bardağı:200|kırmızı mercimek çorbası
+Ezogelin çorbası|Çorba|58,2.8,8.8,1.4|1 kase:250;1 kepçe:180|
+Yayla çorbası|Çorba|55,2.3,6.5,2.2|1 kase:250;1 kepçe:180|yoğurt çorbası
+Tarhana çorbası|Çorba|52,2.0,8.0,1.4|1 kase:250;1 kepçe:180|tarhana
+Domates çorbası|Çorba|45,1.2,6.0,1.9|1 kase:250;1 kepçe:180|
+Tavuk suyu çorba|Çorba|42,3.0,4.5,1.3|1 kase:250;1 kepçe:180|tavuk çorbası, şehriyeli tavuk suyu
+Şehriye çorbası|Çorba|45,1.6,7.2,1.1|1 kase:250;1 kepçe:180|
+Düğün çorbası|Çorba|62,4.0,5.0,2.8|1 kase:250;1 kepçe:180|
+İşkembe çorbası|Çorba|70,5.5,3.0,4.0|1 kase:300;1 kepçe:180|işkembe
+Kelle paça çorbası|Çorba|75,6.0,2.5,4.5|1 kase:300|paça
+Mantar çorbası|Çorba|55,1.5,5.0,3.2|1 kase:250;1 kepçe:180|kremalı mantar çorbası
+Brokoli çorbası|Çorba|50,2.0,5.0,2.5|1 kase:250|
+Sebze çorbası|Çorba|38,1.3,6.0,1.0|1 kase:250;1 kepçe:180|
+Yeşil mercimek çorbası|Çorba|58,3.5,8.5,1.2|1 kase:250|
+Ekşili köfte çorbası|Çorba|60,3.5,5.5,2.6|1 kase:250|ekşili köfte
+Toyga çorbası|Çorba|55,2.5,6.5,2.0|1 kase:250|
+Lebeniye çorbası|Çorba|58,2.8,6.0,2.4|1 kase:250|
+Kremalı tavuk çorbası|Çorba|68,3.5,5.0,3.8|1 kase:250|
+Balkan çorbası|Çorba|52,2.5,7.0,1.6|1 kase:250|
+Analı kızlı çorbası|Çorba|70,4.0,9.0,2.0|1 kase:250|
+Beyran çorbası|Çorba|85,6.5,6.0,4.0|1 kase:350|beyran
+Tutmaç çorbası|Çorba|65,3.0,9.0,2.0|1 kase:250|
+Kabak çorbası|Çorba|40,1.0,5.0,1.8|1 kase:250|balkabağı çorbası
+# --- ZEYTİNYAĞLILAR ---
+Zeytinyağlı taze fasulye|Sebze Yemeği|75,1.8,7.0,4.5|1 porsiyon:200;1 kepçe:150;1 servis kaşığı:50|taze fasulye
+Zeytinyağlı barbunya|Sebze Yemeği|110,5.0,13.0,4.5|1 porsiyon:200;1 kepçe:150|barbunya pilaki
+Zeytinyağlı enginar|Sebze Yemeği|80,2.5,8.0,4.5|1 adet:150;2 adet:300|enginar
+Zeytinyağlı pırasa|Sebze Yemeği|80,1.2,9.0,4.5|1 porsiyon:200;1 kepçe:150|pırasa
+Zeytinyağlı yaprak sarma|Sebze Yemeği|150,2.5,20.0,7.0|1 adet:20;5 adet:100;10 adet:200|yaprak sarma, sarma, dolma (yaprak)
+Zeytinyağlı biber dolması|Sebze Yemeği|120,2.0,16.0,5.5|1 adet:90;3 adet:270|biber dolması (zeytinyağlı)
+Zeytinyağlı kereviz|Sebze Yemeği|75,1.2,8.0,4.2|1 porsiyon:200|kereviz yemeği
+Zeytinyağlı bamya|Sebze Yemeği|70,2.0,7.0,4.0|1 porsiyon:200|
+Zeytinyağlı börülce|Sebze Yemeği|105,5.5,12.0,4.0|1 porsiyon:200|
+İmam bayıldı|Sebze Yemeği|120,1.5,9.0,9.0|1 adet:200;yarım:100|
+Patlıcan kızartması|Sebze Yemeği|210,1.5,8.0,19.0|1 dilim:40;1 porsiyon:150|kızarmış patlıcan
+Kabak kızartması|Sebze Yemeği|160,1.8,7.0,14.0|1 dilim:25;1 porsiyon:150|
+Şakşuka|Sebze Yemeği|150,1.5,9.0,12.0|1 porsiyon:150;1 servis kaşığı:50|
+Türlü (zeytinyağlı)|Sebze Yemeği|70,1.5,7.5,4.0|1 porsiyon:250;1 kepçe:150|
+Zeytinyağlı lahana sarma|Sebze Yemeği|120,2.2,17.0,5.0|1 adet:40;5 adet:200|lahana sarması
+Kabak sinkonta|Sebze Yemeği|80,1.5,7.0,5.0|1 porsiyon:200|
+Fırın sebze|Sebze Yemeği|85,1.8,10.0,4.5|1 porsiyon:200|
+Pilaki (fasulye)|Sebze Yemeği|115,5.0,14.0,4.5|1 porsiyon:200|fasulye pilaki
+# --- ETLİ / SEBZELİ SULU YEMEKLER ---
+Kuru fasulye (etli)|Ana Yemek|125,6.5,13.0,5.0|1 kepçe:200;1 porsiyon:250;1 kase:300|kuru fasulye, etli kuru fasulye
+Kuru fasulye (etsiz)|Ana Yemek|100,5.5,14.0,2.5|1 kepçe:200;1 porsiyon:250|
+Nohut yemeği (etli)|Ana Yemek|130,6.5,14.0,5.0|1 kepçe:200;1 porsiyon:250|nohut
+Nohut yemeği (etsiz)|Ana Yemek|110,5.5,15.0,3.0|1 kepçe:200;1 porsiyon:250|
+Etli taze fasulye|Ana Yemek|85,4.5,6.0,4.8|1 kepçe:200;1 porsiyon:250|
+Etli bezelye|Ana Yemek|95,5.5,9.0,4.0|1 kepçe:200;1 porsiyon:250|bezelye yemeği
+Etli kabak|Ana Yemek|70,4.0,5.0,3.8|1 porsiyon:250|kabak yemeği
+Etli patates|Ana Yemek|105,5.0,11.0,4.5|1 porsiyon:250|patates yemeği
+Etli türlü|Ana Yemek|85,4.5,7.0,4.3|1 porsiyon:250;1 kepçe:200|türlü
+Etli bamya|Ana Yemek|80,5.0,6.0,4.0|1 porsiyon:250|bamya
+Ispanak yemeği (kıymalı)|Ana Yemek|75,4.5,4.5,4.5|1 porsiyon:250;1 kepçe:200|ıspanak, ıspanak yemeği
+Ispanak yemeği (etsiz)|Ana Yemek|55,2.5,5.0,3.0|1 porsiyon:250|
+Kıymalı patates|Ana Yemek|120,6.0,11.0,6.0|1 porsiyon:250|
+Karnıyarık|Ana Yemek|135,5.5,7.0,9.5|1 adet:250;yarım:125|
+Musakka (patlıcan)|Ana Yemek|130,6.0,6.0,9.0|1 porsiyon:250|patlıcan musakka
+Patates musakka|Ana Yemek|125,6.0,11.0,6.5|1 porsiyon:250|
+Etli biber dolması|Ana Yemek|130,6.0,13.0,6.0|1 adet:120;3 adet:360|biber dolması
+Etli kabak dolması|Ana Yemek|110,5.5,11.0,5.0|1 adet:130;3 adet:390|kabak dolması
+Etli yaprak sarma|Ana Yemek|160,6.5,16.0,7.5|1 adet:25;5 adet:125;10 adet:250|etli sarma
+Etli lahana sarma|Ana Yemek|125,5.5,13.0,5.5|1 adet:50;5 adet:250|
+Taze fasulyeli kıyma|Ana Yemek|80,4.5,6.0,4.5|1 porsiyon:250|
+Hünkar beğendi|Ana Yemek|175,10.0,6.0,12.5|1 porsiyon:300|
+Tas kebabı|Ana Yemek|150,13.0,5.0,8.5|1 porsiyon:250|
+Orman kebabı|Ana Yemek|135,11.0,6.0,7.5|1 porsiyon:300|
+Kuzu tandır|Ana Yemek|260,25.0,0.5,17.5|1 porsiyon:200|tandır
+Kuzu incik|Ana Yemek|215,22.0,2.0,13.0|1 adet:350|incik
+Etli güveç|Ana Yemek|120,9.0,6.0,6.5|1 porsiyon:300|güveç
+Sebzeli kebap|Ana Yemek|115,9.0,6.0,6.0|1 porsiyon:300|
+Et sote|Ana Yemek|170,18.0,4.0,9.0|1 porsiyon:200|dana sote
+Tavuk sote|Ana Yemek|135,16.0,4.0,6.0|1 porsiyon:250|
+Fırın tavuk (patatesli)|Ana Yemek|150,13.0,8.0,7.5|1 porsiyon:300|
+Tavuk haşlama|Ana Yemek|150,23.0,0.5,6.0|1 porsiyon:200|haşlanmış tavuk
+Izgara tavuk but|Ana Yemek|210,24.0,0.0,12.5|1 adet:120;1 porsiyon:200|
+Tavuk şinitzel|Ana Yemek|255,18.0,13.0,14.5|1 adet:150|şinitzel
+Tavuk nugget|Fast Food|295,15.0,16.0,19.0|1 adet:18;6 adet:108;9 adet:160|nugget
+Çıtır tavuk|Fast Food|280,20.0,12.0,17.0|1 parça:100;3 parça:300|kızarmış tavuk, kfc
+Tavuk kanat (sos/ızgara)|Ana Yemek|260,22.0,2.0,18.0|1 adet:35;6 adet:210;10 adet:350|kanat
+Köfte (ev, kızartma)|Ana Yemek|260,16.0,8.0,18.0|1 adet:30;5 adet:150;8 adet:240|kızarmış köfte
+Izgara köfte|Kebap & Izgara|230,18.0,5.0,15.5|1 adet:30;5 adet:150;1 porsiyon (8 adet):240|köfte
+İnegöl köfte|Kebap & Izgara|245,17.0,4.0,18.0|1 porsiyon:200|
+Sulu köfte|Ana Yemek|95,6.5,7.0,4.5|1 porsiyon:300;1 kepçe:200|terbiyeli köfte
+Kadınbudu köfte|Ana Yemek|240,13.0,13.0,15.0|1 adet:60;3 adet:180|
+İzmir köfte|Ana Yemek|135,8.0,8.0,8.0|1 porsiyon:350|
+Fırın köfte|Ana Yemek|170,11.0,8.0,10.5|1 porsiyon:300|
+Dalyan köfte|Ana Yemek|215,14.0,7.0,14.5|1 dilim:150|
+Hamburger köftesi|Et & Tavuk|250,17.0,3.0,19.0|1 adet:100|
+Kıymalı ıspanak|Ana Yemek|80,5.0,4.5,4.8|1 porsiyon:250|
+Kavurma|Ana Yemek|290,22.0,0.0,22.5|1 porsiyon:150;100 gram:100|et kavurma
+Ciğer tava|Ana Yemek|215,22.0,7.0,11.0|1 porsiyon:150|arnavut ciğeri
+Kokoreç|Sokak Lezzeti|280,17.0,1.0,23.0|yarım ekmek:250;çeyrek ekmek:150;1 porsiyon (ekmeksiz):150|
+Kokoreç (yarım ekmek)|Sokak Lezzeti|265,12.0,23.0,14.0|1 adet:280|
+Midye dolma|Sokak Lezzeti|165,6.0,22.0,6.0|1 adet:22;5 adet:110;10 adet:220|midye
+Midye tava|Sokak Lezzeti|230,10.0,15.0,14.5|1 porsiyon (10 adet):150|
+Kumpir (tam)|Sokak Lezzeti|160,5.0,17.0,8.0|1 adet:550|kumpir
+Islak hamburger|Sokak Lezzeti|245,9.5,30.0,10.0|1 adet:130|
+Balık ekmek|Sokak Lezzeti|210,13.0,22.0,7.5|1 adet:300|
+Tantuni (dürüm)|Sokak Lezzeti|210,12.0,22.0,8.0|1 adet:220;yarım ekmek:280|tantuni
+Çiğ köfte|Sokak Lezzeti|180,4.5,32.0,3.5|1 adet (parmak):30;5 adet:150|
+Çiğ köfte dürüm|Sokak Lezzeti|195,5.0,35.0,3.8|1 adet:220;1 büyük dürüm:300|
+Mısır (haşlanmış, sokak)|Sokak Lezzeti|105,3.3,22.0,1.4|1 koçan:150|
+Kestane kebap|Sokak Lezzeti|210,3.0,45.0,2.0|10 adet:90;1 külah:150|kestane
+Simit|Ekmek|310,9.5,57.0,5.0|1 adet:100;yarım:50|gevrek
+Açma|Ekmek|360,7.5,45.0,17.0|1 adet:90|
+Poğaça (peynirli)|Ekmek|360,8.5,42.0,17.5|1 adet:70;1 büyük:100|poğaça
+Poğaça (zeytinli)|Ekmek|365,7.5,43.0,18.0|1 adet:70|
+Pişi|Ekmek|340,7.0,42.0,16.0|1 adet:60|
+Kumru|Sokak Lezzeti|255,11.0,27.0,11.5|1 adet:250|
+Sucuk ekmek|Sokak Lezzeti|300,11.0,28.0,16.0|1 adet:200|
+Tost (kaşarlı)|Sokak Lezzeti|300,12.5,32.0,13.5|1 adet:130|kaşarlı tost
+Tost (karışık)|Sokak Lezzeti|290,13.0,30.0,13.0|1 adet:160|karışık tost
+Ayvalık tostu|Sokak Lezzeti|270,11.5,26.0,13.5|1 adet:350|
+Gözleme (peynirli)|Hamur İşi|255,9.5,30.0,11.0|1 adet:200;yarım:100|gözleme
+Gözleme (patatesli)|Hamur İşi|240,5.0,35.0,9.0|1 adet:200|
+Gözleme (kıymalı)|Hamur İşi|260,10.0,28.0,12.0|1 adet:200|
+Gözleme (ıspanaklı)|Hamur İşi|220,7.0,29.0,8.5|1 adet:200|

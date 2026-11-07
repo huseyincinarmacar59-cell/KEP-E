@@ -1,0 +1,190 @@
+# --- MEZE & SALATA ---
+Çoban salata|Salata & Meze|45,1.0,5.0,2.5|1 kase:200;1 porsiyon:250;1 küçük kase:150|çoban salatası
+Mevsim salata|Salata & Meze|40,1.2,4.5,2.2|1 kase:200;1 porsiyon:250|yeşil salata
+Gavurdağı salatası|Salata & Meze|120,2.8,6.0,9.5|1 porsiyon:200|
+Kısır|Salata & Meze|165,3.8,26.0,5.5|1 porsiyon:150;1 servis kaşığı:50;1 kase:200|
+Piyaz|Salata & Meze|130,5.5,15.0,5.5|1 porsiyon:200|
+Patates salatası|Salata & Meze|115,1.8,15.0,5.5|1 porsiyon:200|
+Rus salatası|Salata & Meze|185,2.5,10.0,15.5|1 yemek kaşığı:20;1 porsiyon:150|amerikan salatası
+Ton balıklı salata|Salata & Meze|120,10.0,5.0,7.0|1 porsiyon:250|
+Tavuklu salata|Salata & Meze|110,11.0,5.0,5.5|1 porsiyon:300|
+Sezar salata|Salata & Meze|150,8.0,8.0,10.0|1 porsiyon:300|caesar salata
+Ezme (acılı)|Salata & Meze|70,1.5,8.0,3.8|1 yemek kaşığı:20;1 porsiyon:100|acılı ezme
+Haydari|Salata & Meze|135,4.5,4.5,11.0|1 yemek kaşığı:20;1 porsiyon:100|
+Cacık|Salata & Meze|45,2.5,4.0,2.2|1 kase:200;1 su bardağı:200|
+Humus|Salata & Meze|175,7.5,14.0,10.5|1 yemek kaşığı:20;1 porsiyon:100|
+Babagannuş|Salata & Meze|110,2.0,7.0,8.5|1 yemek kaşığı:20;1 porsiyon:100|
+Muhammara|Salata & Meze|260,4.5,15.0,21.0|1 yemek kaşığı:20;1 porsiyon:80|
+Fava|Salata & Meze|145,7.0,15.0,6.5|1 dilim:80;1 porsiyon:120|
+Atom|Salata & Meze|170,4.0,6.0,14.5|1 porsiyon:100|
+Köpoğlu|Salata & Meze|130,2.0,9.0,9.5|1 porsiyon:150|
+Közlenmiş biber|Salata & Meze|75,1.0,6.0,5.5|1 adet:40;1 porsiyon:100|
+Patlıcan salatası|Salata & Meze|95,1.5,7.0,7.0|1 porsiyon:150|
+Semizotu salatası (yoğurtlu)|Salata & Meze|60,3.0,4.0,3.5|1 porsiyon:150|
+Mercimek köftesi|Salata & Meze|165,7.0,26.0,4.0|1 adet:30;5 adet:150|
+İçli köfte (kızartma)|Salata & Meze|255,10.0,25.0,13.0|1 adet:70;3 adet:210|içli köfte
+İçli köfte (haşlama)|Salata & Meze|190,10.0,25.0,5.5|1 adet:70|
+Arnavut ciğeri|Salata & Meze|215,20.0,8.0,11.5|1 porsiyon:150|
+Paçanga meze|Salata & Meze|300,12.0,24.0,17.5|1 adet:80|
+Sigara böreği meze|Salata & Meze|310,9.0,27.0,18.5|1 adet:30|
+Zeytinyağlı fasulye pilaki|Salata & Meze|115,5.0,14.0,4.5|1 porsiyon:150|
+Turşu (karışık)|Salata & Meze|20,0.8,3.5,0.2|1 kase:100|
+Kornişon turşu|Salata & Meze|15,0.5,3.0,0.2|1 adet:15;5 adet:75|
+Şalgam suyu|İçecek|15,0.4,3.0,0.0|1 su bardağı:200;1 şişe:300|şalgam
+Sarımsaklı yoğurt|Salata & Meze|65,3.5,4.5,3.5|1 yemek kaşığı:20;1 kase:150|
+# --- KAHVALTI (Türk) ---
+Menemen|Kahvaltı|110,6.0,4.5,7.5|1 porsiyon:250;1 tava (2 kişilik):500|
+Sahanda yumurta|Kahvaltı|185,12.5,1.0,14.5|1 yumurta:55;2 yumurta:110|yağda yumurta
+Sucuklu yumurta|Kahvaltı|255,14.0,1.5,21.5|1 porsiyon:150|
+Omlet (sade)|Kahvaltı|155,10.5,1.0,12.0|2 yumurta:120;3 yumurta:180|omlet
+Peynirli omlet|Kahvaltı|195,13.0,1.5,15.5|2 yumurta:150|
+Çılbır|Kahvaltı|150,9.0,4.0,11.0|1 porsiyon:200|
+Beyaz peynir|Kahvaltı|265,17.0,2.0,21.0|1 dilim:30;1 kibrit kutusu:30;1 yemek kaşığı (ezik):20|peynir, ezine
+Beyaz peynir (yağsız/light)|Kahvaltı|195,20.0,2.5,11.5|1 dilim:30|light peynir
+Tulum peyniri|Kahvaltı|350,22.0,2.0,28.5|1 dilim:20;1 yemek kaşığı:20|tulum
+Örgü peyniri|Kahvaltı|290,22.0,1.5,21.5|1 dilim:30|
+Dil peyniri|Kahvaltı|290,23.0,1.5,21.0|1 tel:20;1 porsiyon:50|
+Çökelek|Kahvaltı|105,14.0,4.0,3.5|1 yemek kaşığı:20;1 kase:150|
+Çeçil peyniri|Kahvaltı|300,24.0,1.5,22.0|1 porsiyon:40|
+Hellim|Kahvaltı|320,22.0,2.0,25.0|1 dilim:30|
+Sucuk (çiğ)|Kahvaltı|430,20.0,2.0,38.0|1 dilim:10;5 dilim:50|sucuk
+Pastırma|Kahvaltı|250,30.0,2.0,13.5|1 dilim:10;5 dilim:50|
+Kavurma (kahvaltılık)|Kahvaltı|420,20.0,0.0,37.5|1 yemek kaşığı:20|
+Tereyağlı bal kaymak|Kahvaltı|450,1.5,40.0,32.0|1 porsiyon:50|bal kaymak
+Kaymaklı simit|Kahvaltı|360,8.0,50.0,14.0|1 adet:150|
+Haşhaş ezmesi|Kahvaltı|480,12.0,35.0,33.0|1 tatlı kaşığı:10|
+Tahin pekmez|Kahvaltı|430,8.0,45.0,25.0|1 yemek kaşığı:20;1 porsiyon:40|tahin-pekmez
+Kahvaltılık gevrek (çikolatalı)|Kahvaltı|390,7.0,80.0,4.5|1 kase:40|
+Granola|Kahvaltı|450,10.0,62.0,18.0|1 kase:50;3 yemek kaşığı:30|
+Yulaf lapası (sütlü)|Kahvaltı|90,3.8,13.0,2.5|1 kase:250|porridge
+Pankek|Kahvaltı|230,6.5,30.0,9.5|1 adet:40;3 adet:120|pancake
+Krep|Kahvaltı|210,6.0,26.0,9.0|1 adet:60|
+Waffle|Tatlı|290,7.0,33.0,14.5|1 adet (sade):100;1 adet (malzemeli):250|
+Patates kızartması (ev)|Kahvaltı|300,3.5,35.0,16.5|1 porsiyon:150;1 avuç:50|
+Sigara böreği (kahvaltı)|Kahvaltı|310,9.0,27.0,18.5|1 adet:30|
+Kahvaltı tabağı (serpme, kişi başı)|Kahvaltı|230,9.0,15.0,15.0|1 kişilik:450|serpme kahvaltı
+Avokadolu tost|Kahvaltı|220,6.0,22.0,12.5|1 dilim:120|
+# --- TATLILAR ---
+Baklava (fıstıklı)|Tatlı|430,7.0,50.0,23.0|1 dilim:35;3 dilim:105;1 porsiyon (4 dilim):140|baklava
+Baklava (cevizli)|Tatlı|420,6.0,52.0,21.5|1 dilim:35;4 dilim:140|
+Şöbiyet|Tatlı|440,7.5,48.0,24.0|1 adet:40;3 adet:120|
+Burma kadayıf|Tatlı|420,6.5,52.0,21.0|1 adet:50|
+Künefe|Tatlı|350,7.0,40.0,18.0|1 porsiyon:180;yarım porsiyon:90|
+Tel kadayıf|Tatlı|390,5.0,52.0,18.0|1 dilim:100|kadayıf
+Ekmek kadayıfı|Tatlı|330,4.0,55.0,11.0|1 dilim:100;kaymaklı dilim:130|
+Revani|Tatlı|315,4.5,52.0,10.0|1 dilim:80|
+Şekerpare|Tatlı|390,4.5,58.0,15.5|1 adet:35;3 adet:105|
+Kalburabastı|Tatlı|400,5.0,58.0,17.0|1 adet:40|
+Tulumba tatlısı|Tatlı|360,3.0,52.0,15.5|1 adet:20;5 adet:100|tulumba
+Lokma|Tatlı|340,3.5,50.0,14.0|5 adet:60;10 adet:120|
+Kemalpaşa tatlısı|Tatlı|320,6.0,55.0,8.5|1 adet:30|
+Sütlaç|Tatlı|130,3.5,22.0,3.0|1 kase:200;1 küçük kase:150|fırın sütlaç
+Muhallebi|Tatlı|125,3.5,20.0,3.5|1 kase:200|
+Tavuk göğsü (tatlı)|Tatlı|140,4.5,22.0,3.5|1 dilim:150|
+Kazandibi|Tatlı|150,4.0,24.0,4.0|1 dilim:150|
+Keşkül|Tatlı|150,4.0,20.0,6.0|1 kase:200|
+Supangle|Tatlı|170,4.0,26.0,5.5|1 kase:200|
+Profiterol|Tatlı|280,5.0,30.0,15.5|1 porsiyon:200|
+Güllaç|Tatlı|150,4.0,25.0,3.5|1 dilim:150|
+Aşure|Tatlı|145,3.0,30.0,2.0|1 kase:200|
+İrmik helvası|Tatlı|340,5.0,48.0,14.5|1 porsiyon:100;1 servis kaşığı:60|helva
+Un helvası|Tatlı|420,5.5,52.0,21.5|1 porsiyon:80|
+Tahin helvası|Tatlı|520,13.0,50.0,30.0|1 dilim:40;1 porsiyon:60|
+Pişmaniye|Tatlı|490,5.0,70.0,21.0|1 avuç:30|
+Lokum|Tatlı|340,0.5,85.0,0.5|1 adet:15;3 adet:45|türk lokumu
+Fıstıklı lokum|Tatlı|380,3.0,78.0,6.5|1 adet:15|
+Cezerye|Tatlı|360,2.0,72.0,7.0|1 adet:20|
+Kabak tatlısı|Tatlı|140,0.8,33.0,0.5|1 porsiyon:150;cevizli porsiyon:170|
+Ayva tatlısı|Tatlı|180,0.6,42.0,1.5|1 yarım ayva:200|
+Kayısı tatlısı|Tatlı|280,3.0,50.0,8.0|1 adet:40|
+Trileçe|Tatlı|230,5.0,32.0,9.0|1 dilim:150|
+Cheesecake|Tatlı|320,5.5,26.0,22.5|1 dilim:120|
+Tiramisu|Tatlı|285,5.0,27.0,17.5|1 dilim:120|
+Brownie|Tatlı|430,5.5,52.0,23.0|1 parça:60|
+Islak kek|Tatlı|360,5.0,48.0,17.0|1 dilim:80|
+Kek (ev, sade)|Tatlı|380,6.0,52.0,16.0|1 dilim:60|
+Pasta (yaş, kremalı)|Tatlı|300,4.5,36.0,15.5|1 dilim:130|yaş pasta, doğum günü pastası
+Çikolatalı pasta|Tatlı|360,5.0,42.0,19.5|1 dilim:130|
+Ekler|Tatlı|290,5.0,30.0,17.0|1 adet:60|
+Kurabiye (ev)|Tatlı|480,6.0,60.0,24.0|1 adet:20|
+Un kurabiyesi|Tatlı|510,6.0,60.0,28.0|1 adet:15|
+Tuzlu kurabiye|Hamur İşi|470,8.0,48.0,27.5|1 adet:20|
+Donut|Tatlı|420,5.0,49.0,23.0|1 adet:60|
+Kruvasan (çikolatalı)|Tatlı|420,7.0,48.0,22.0|1 adet:80|
+Sakızlı muhallebi|Tatlı|125,3.5,20.0,3.5|1 kase:200|
+Dondurma (maraş)|Tatlı|220,4.0,28.0,10.5|1 top:60;1 külah (2 top):130|maraş dondurması
+Meyveli dondurma|Tatlı|140,1.0,30.0,2.0|1 top:65|
+Magnolia|Tatlı|230,4.0,28.0,11.5|1 kap:200|
+San Sebastian|Tatlı|330,6.0,22.0,24.5|1 dilim:150|
+Katmer|Tatlı|420,8.0,40.0,25.5|1 adet:250|gaziantep katmeri
+Höşmerim|Tatlı|340,7.0,45.0,15.0|1 porsiyon:100|
+Sütlü nuriye|Tatlı|300,5.0,40.0,13.5|1 dilim:80|
+Fırın helva|Tatlı|360,6.0,45.0,17.5|1 porsiyon:100|
+Mozaik pasta|Tatlı|450,5.0,52.0,25.0|1 dilim:60|
+Pamuk şeker|Tatlı|390,0.0,100.0,0.0|1 adet:30|
+Elma şekeri|Tatlı|230,0.3,58.0,0.2|1 adet:150|
+# --- GELENEKSEL İÇECEKLER ---
+Ayran|İçecek|38,1.8,2.8,2.0|1 su bardağı:200;1 kutu:200;1 şişe (300 ml):300;1 büyük şişe (1 L):1000|
+Türk kahvesi (sade)|İçecek|7,0.3,1.0,0.2|1 fincan:70|türk kahvesi
+Türk kahvesi (orta şekerli)|İçecek|30,0.3,6.5,0.2|1 fincan:70|
+Türk kahvesi (şekerli)|İçecek|50,0.3,11.5,0.2|1 fincan:70|
+Türk kahvesi (sütlü)|İçecek|55,2.5,5.0,2.8|1 fincan:80|
+Çay (1 şekerli)|İçecek|21,0.0,5.0,0.0|1 ince belli:100|şekerli çay
+Çay (2 şekerli)|İçecek|41,0.0,10.0,0.0|1 ince belli:100|
+Sahlep|İçecek|105,3.3,17.0,2.8|1 kupa:250|salep
+Boza|İçecek|105,1.2,24.0,0.3|1 su bardağı:250|
+Şerbet|İçecek|60,0.0,15.0,0.0|1 su bardağı:200|
+Limonata (ev)|İçecek|45,0.1,11.5,0.0|1 su bardağı:200|limonata
+Sıcak çikolata|İçecek|85,3.5,11.0,3.2|1 kupa:250|
+Latte|İçecek|55,3.0,4.5,2.8|küçük:250;orta:350;büyük:450|caffe latte
+Cappuccino|İçecek|45,2.5,4.0,2.2|küçük:250;orta:350|
+Americano|İçecek|2,0.1,0.3,0.0|1 kupa:350|
+Espresso|İçecek|9,0.1,1.7,0.2|1 shot:30;double:60|
+Mocha|İçecek|80,3.0,10.0,3.2|orta:350|
+Frappe|İçecek|85,2.0,15.0,2.0|orta:400|frappuccino
+Ice latte|İçecek|45,2.5,4.0,2.2|orta:400|buzlu latte
+Bitki çayı|İçecek|1,0.0,0.2,0.0|1 kupa:250|ıhlamur, adaçayı, papatya çayı
+Kefir|İçecek|55,3.3,4.5,2.5|1 su bardağı:200;1 şişe:250|
+Soğuk çay (şeftalili)|İçecek|30,0.0,7.5,0.0|1 kutu:330;1 şişe (500 ml):500|ice tea
+Meyveli soda|İçecek|25,0.0,6.0,0.0|1 şişe:200|
+Ayran (light)|İçecek|30,2.0,3.0,1.0|1 su bardağı:200|
+Smoothie (meyveli)|İçecek|65,1.5,13.0,0.8|1 bardak:350|
+Protein shake (sütlü)|İçecek|80,9.0,6.0,2.0|1 bardak:350|
+Rakı|İçecek|300,0.0,0.0,0.0|1 tek:40;1 duble:80|
+Votka|İçecek|230,0.0,0.0,0.0|1 shot:40|
+# --- MARKET / PAKETLİ ---
+Gofret (çikolata kaplı)|Atıştırmalık|525,6.5,60.0,28.5|1 adet:35;1 küçük:20|
+Çikolatalı bar (karamelli)|Atıştırmalık|480,4.5,65.0,22.0|1 adet:50|snickers, mars tarzı
+Bisküvi (çikolata kaplı)|Atıştırmalık|500,6.0,63.0,25.0|1 adet:12;1 paket:100|
+Kremalı bisküvi|Atıştırmalık|480,5.5,68.0,21.0|1 adet:12;1 paket:60|
+Petibör bisküvi|Atıştırmalık|440,7.5,74.0,13.0|1 adet:6;5 adet:30|petit beurre
+Kraker (tuzlu, balık)|Atıştırmalık|470,10.0,64.0,19.0|1 avuç:25;1 paket:50|
+Kek (paketli, kakaolu)|Atıştırmalık|420,5.0,52.0,21.5|1 adet:40|paket kek
+Kruvasan (paketli)|Atıştırmalık|420,6.5,48.0,22.0|1 adet:45|
+Mısır patlağı (paketli, tereyağlı)|Atıştırmalık|500,8.0,57.0,28.0|1 paket:90|mikrodalga patlamış mısır
+Çubuk kraker|Atıştırmalık|400,11.0,75.0,5.5|1 avuç:25;1 paket:40|
+Sakız (şekersiz)|Atıştırmalık|200,0.0,50.0,0.0|1 adet:2|
+Şeker (meyveli)|Atıştırmalık|380,0.0,95.0,0.0|1 adet:5|
+Jelibon|Atıştırmalık|340,6.5,77.0,0.2|1 paket:80;1 avuç:30|
+Lolipop|Atıştırmalık|390,0.0,98.0,0.0|1 adet:10|
+Protein bar|Atıştırmalık|370,30.0,35.0,12.0|1 adet:50|
+Pirinç patlağı|Atıştırmalık|385,8.0,81.0,3.0|1 adet:9;3 adet:27|
+Kuru meyve karışımı|Kuruyemiş|380,4.0,70.0,8.0|1 avuç:30|
+Karışık kuruyemiş|Kuruyemiş|600,18.0,20.0,52.0|1 avuç:30;1 paket:150|çerez
+Fındık ezmesi|Kahvaltı|620,14.0,17.0,56.0|1 yemek kaşığı:16|
+Hazır puding (sütle)|Tatlı|120,3.0,20.0,3.0|1 kase:150|puding
+Hazır sütlü tatlı (market)|Tatlı|130,3.0,22.0,3.5|1 kap:125|
+Meyveli yoğurt|Süt Ürünleri|95,3.5,15.0,2.5|1 kap:125|
+Puding kap (çikolatalı)|Tatlı|135,3.0,21.0,4.0|1 kap:100|
+Krem şanti|Tatlı|270,2.0,15.0,22.5|1 yemek kaşığı:10|
+Hazır çorba (paket, hazırlanmış)|Çorba|35,1.0,6.0,1.0|1 kase:250|paket çorba
+Konserve fasulye (domates soslu)|Baklagil|85,5.0,15.0,0.5|yarım kutu:200|
+Hazır humus|Salata & Meze|250,7.0,13.0,19.0|1 yemek kaşığı:20|
+Tavuk salam|Kahvaltı|160,13.0,4.0,10.5|1 dilim:10;5 dilim:50|
+Kavurma (konserve)|Kahvaltı|380,22.0,0.0,32.0|1 yemek kaşığı:20|
+Sosis (tavuk)|Et & Tavuk|220,12.0,4.0,17.5|1 adet:40|tavuk sosis
+Hazır köfte (dondurulmuş, pişmiş)|Et & Tavuk|250,15.0,8.0,17.5|1 adet:25;6 adet:150|
+Pane tavuk (dondurulmuş, pişmiş)|Et & Tavuk|260,15.0,16.0,15.0|1 adet:60|
+Hazır pizza (dondurulmuş)|Fast Food|245,9.5,30.0,9.5|1 dilim:80;1 adet:330|
+Hazır lazanya (dondurulmuş)|Pilav & Makarna|140,7.5,14.0,6.0|1 kutu:400|
+Margarinli börek (hazır)|Hamur İşi|330,8.0,30.0,20.0|1 dilim:100|

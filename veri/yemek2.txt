@@ -1,0 +1,131 @@
+# --- PİLAV & MAKARNA ---
+Pirinç pilavı (tereyağlı)|Pilav & Makarna|160,2.8,28.0,4.0|1 porsiyon:200;1 servis kaşığı:50;1 su bardağı:160;1 tabak:250|pilav, pirinç pilavı
+Şehriyeli pirinç pilavı|Pilav & Makarna|165,3.0,28.5,4.3|1 porsiyon:200;1 servis kaşığı:50|
+Bulgur pilavı|Pilav & Makarna|125,3.5,22.0,2.8|1 porsiyon:200;1 servis kaşığı:50;1 su bardağı:180|
+Domatesli bulgur pilavı|Pilav & Makarna|120,3.3,21.0,2.8|1 porsiyon:200|
+Nohutlu pilav|Pilav & Makarna|170,4.0,28.0,4.5|1 porsiyon:200|
+İç pilav|Pilav & Makarna|190,4.5,28.0,6.5|1 porsiyon:200|
+Etli pilav|Pilav & Makarna|185,7.5,24.0,6.5|1 porsiyon:250|
+Tavuklu pilav|Pilav & Makarna|170,8.0,23.0,5.0|1 porsiyon:250|pilav üstü tavuk
+Nohutlu tavuklu pilav (sokak)|Sokak Lezzeti|175,7.5,25.0,5.0|1 porsiyon:300;yarım porsiyon:200|tavuklu pilav (seyyar)
+Perde pilavı|Pilav & Makarna|245,8.0,30.0,10.0|1 dilim:250|
+Sebzeli pilav|Pilav & Makarna|140,2.8,25.0,3.2|1 porsiyon:200|
+Mantı|Pilav & Makarna|185,7.5,24.0,6.5|1 porsiyon:300;yarım porsiyon:150;1 tabak:350|kayseri mantısı
+Fırın mantı|Pilav & Makarna|210,8.0,26.0,8.0|1 porsiyon:300|
+Makarna (domates soslu)|Pilav & Makarna|145,4.5,25.0,3.0|1 porsiyon:250;1 tabak:300|domatesli makarna
+Makarna (kıymalı)|Pilav & Makarna|175,8.0,22.0,6.0|1 porsiyon:250|bolonez, spagetti bolonez
+Makarna (peynirli)|Pilav & Makarna|185,7.0,24.0,6.5|1 porsiyon:250|
+Makarna (kremalı tavuklu)|Pilav & Makarna|190,9.0,20.0,8.0|1 porsiyon:300|fettucine alfredo
+Makarna (pesto)|Pilav & Makarna|220,6.0,25.0,10.5|1 porsiyon:250|
+Fırın makarna|Pilav & Makarna|185,7.0,22.0,7.5|1 dilim:200|
+Erişte (tereyağlı)|Pilav & Makarna|190,5.5,30.0,5.5|1 porsiyon:200|ev eriştesi
+Kuskus|Pilav & Makarna|150,4.5,28.0,2.0|1 porsiyon:200|
+Lazanya|Pilav & Makarna|165,9.0,15.0,7.5|1 dilim:250|
+Noodle (paket, pişmiş)|Pilav & Makarna|190,4.0,26.0,8.0|1 paket hazırlanmış:250|hazır noodle, indomie
+Risotto|Pilav & Makarna|165,4.0,24.0,5.5|1 porsiyon:250|
+# --- HAMUR İŞİ & BÖREK ---
+Su böreği|Hamur İşi|260,10.5,24.0,13.5|1 dilim:120;1 küçük dilim:80|
+Sigara böreği|Hamur İşi|310,9.0,27.0,18.5|1 adet:30;5 adet:150|
+Kol böreği (kıymalı)|Hamur İşi|295,9.5,27.0,16.5|1 dilim:120|
+Kol böreği (patatesli)|Hamur İşi|280,5.5,32.0,14.5|1 dilim:120|
+Ispanaklı börek|Hamur İşi|245,7.5,24.0,13.0|1 dilim:120|
+Peynirli börek (tepsi)|Hamur İşi|285,10.0,25.0,16.0|1 dilim:120;1 kare:100|börek
+Kıymalı börek (tepsi)|Hamur İşi|290,10.5,24.0,17.0|1 dilim:120|
+Patatesli börek|Hamur İşi|260,5.5,30.0,13.0|1 dilim:120|
+Paçanga böreği|Hamur İşi|310,12.0,24.0,18.5|1 adet:80|paçanga
+Talaş böreği|Hamur İşi|340,11.0,26.0,21.0|1 adet:120|
+Çiğ börek|Hamur İşi|320,10.0,28.0,18.5|1 adet:150|çibörek
+Laz böreği|Tatlı|275,5.5,32.0,14.0|1 dilim:150|
+Su böreği (kıymalı)|Hamur İşi|265,11.0,23.0,14.0|1 dilim:120|
+Kaşarlı börek (milföy)|Hamur İşi|370,9.0,30.0,24.0|1 adet:70|milföy börek
+Pide (kaşarlı)|Hamur İşi|265,11.5,32.0,10.0|1 adet:280;yarım:140;1 dilim:50|kaşarlı pide
+Pide (kıymalı)|Hamur İşi|245,11.0,30.0,9.0|1 adet:300;yarım:150;1 dilim:50|kıymalı pide
+Pide (kuşbaşılı)|Hamur İşi|250,13.0,29.0,9.5|1 adet:320;yarım:160|kuşbaşılı pide
+Pide (karışık)|Hamur İşi|270,12.5,29.0,11.5|1 adet:330;yarım:165|
+Pide (yumurtalı kaşarlı)|Hamur İşi|255,12.0,28.0,10.5|1 adet:300|
+Pide (sucuklu kaşarlı)|Hamur İşi|295,12.5,29.0,14.5|1 adet:300|
+Lahmacun|Hamur İşi|235,10.5,31.0,7.5|1 adet:130;1 büyük:170|
+Etli ekmek|Hamur İşi|240,12.0,29.0,8.5|1 adet:250|konya etli ekmek
+Bazlama|Ekmek|275,8.5,52.0,3.5|1 adet:120;yarım:60|
+Yufka ekmeği|Ekmek|300,9.0,60.0,2.5|1 yaprak:60|
+Ramazan pidesi|Ekmek|265,8.5,51.0,2.5|1 adet:350;1 dilim:50;çeyrek:90|pide (ekmek)
+Köy ekmeği|Ekmek|250,8.0,50.0,1.5|1 dilim:40|ekşi mayalı ekmek
+Mısır ekmeği|Ekmek|260,6.5,42.0,7.5|1 dilim:60|
+Kete|Ekmek|420,7.0,50.0,21.0|1 adet:80|
+Çatal|Ekmek|420,6.5,55.0,19.0|1 adet:60|
+Simit (susamlı, büyük)|Ekmek|310,9.5,57.0,5.0|1 adet:130|
+Hamburger ekmeği|Ekmek|270,9.0,49.0,4.0|1 adet:60|
+Tost ekmeği|Ekmek|265,8.0,49.0,3.5|1 dilim:25|
+Sandviç ekmeği|Ekmek|275,9.0,50.0,4.0|1 adet:80|
+Baget|Ekmek|275,10.0,54.0,1.5|yarım:125;çeyrek:65|
+Kruvasan|Ekmek|405,8.0,46.0,21.0|1 adet:60|croissant
+Mantı (paket, pişmiş)|Pilav & Makarna|190,7.5,26.0,6.0|1 porsiyon:250|
+# --- KEBAP & IZGARA ---
+Adana kebap|Kebap & Izgara|290,17.0,1.0,24.0|1 şiş:100;1 porsiyon (2 şiş):200|adana
+Urfa kebap|Kebap & Izgara|285,17.0,1.0,23.5|1 şiş:100;1 porsiyon:200|urfa
+Adana kebap (porsiyon, pilav lavaş ile)|Kebap & Izgara|210,10.0,20.0,10.0|1 tabak:450|
+Şiş kebap|Kebap & Izgara|215,24.0,1.0,13.0|1 şiş:100;1 porsiyon:200|kuşbaşı şiş
+Tavuk şiş|Kebap & Izgara|160,24.0,2.0,6.0|1 şiş:100;1 porsiyon:200|
+Çöp şiş|Kebap & Izgara|230,22.0,1.0,15.0|1 çubuk:30;10 çubuk:300|
+Beyti|Kebap & Izgara|250,13.0,14.0,15.5|1 porsiyon:350|
+İskender|Kebap & Izgara|205,11.0,13.0,12.0|1 porsiyon:350;yarım porsiyon:200;1.5 porsiyon:500|iskender kebap
+Döner (et, sade)|Kebap & Izgara|260,20.0,3.0,19.0|1 porsiyon (sade):150;100 gram:100|et döner
+Döner (tavuk, sade)|Kebap & Izgara|200,20.0,3.0,12.0|1 porsiyon (sade):150;100 gram:100|tavuk döner
+Et döner dürüm|Kebap & Izgara|240,12.5,23.0,11.0|1 adet:250;1 büyük:330|döner dürüm
+Tavuk döner dürüm|Kebap & Izgara|215,12.0,24.0,8.0|1 adet:250;1 büyük:330|tavuk dürüm
+Et döner yarım ekmek|Kebap & Izgara|245,12.0,25.0,11.0|1 adet:300|döner ekmek arası
+Tavuk döner yarım ekmek|Kebap & Izgara|220,12.0,26.0,8.0|1 adet:300|
+Pilav üstü döner|Kebap & Izgara|200,11.0,18.0,9.5|1 porsiyon:350|
+Ali Nazik|Kebap & Izgara|185,11.0,6.0,13.0|1 porsiyon:350|
+Patlıcan kebabı|Kebap & Izgara|210,12.0,6.0,15.5|1 porsiyon:300|
+Testi kebabı|Kebap & Izgara|130,11.0,5.0,7.5|1 porsiyon:350|
+Cağ kebabı|Kebap & Izgara|265,22.0,0.5,19.5|1 şiş:100;1 porsiyon:200|
+Kuzu şiş|Kebap & Izgara|250,23.0,0.5,17.5|1 şiş:100;1 porsiyon:200|
+Pirzola (ızgara)|Kebap & Izgara|290,24.0,0.0,21.5|1 adet:50;4 adet:200|
+Bonfile (ızgara)|Kebap & Izgara|200,28.0,0.0,9.5|1 porsiyon:200|
+Kanat (ızgara)|Kebap & Izgara|250,23.0,0.5,17.5|1 adet:35;1 porsiyon (8 adet):280|
+Ciğer şiş|Kebap & Izgara|190,24.0,4.0,8.5|1 şiş:80;3 şiş:240|
+Kuzu kokoreç|Kebap & Izgara|280,17.0,1.0,23.0|1 porsiyon:150|
+Hatay dürüm|Kebap & Izgara|255,12.5,25.0,12.0|1 adet:300|
+Ciğer dürüm|Kebap & Izgara|215,13.0,23.0,8.0|1 adet:250|
+Lahmacun dürüm (yeşillikli)|Hamur İşi|200,9.0,27.0,6.5|1 adet:170|
+Mangal sucuk|Kebap & Izgara|430,20.0,2.0,38.0|1 dilim:10;1 porsiyon:100|
+# --- FAST FOOD ---
+Hamburger (klasik)|Fast Food|250,13.0,25.0,11.0|1 adet:200;1 büyük:280|burger
+Cheeseburger|Fast Food|265,14.0,24.0,12.5|1 adet:150|
+Big Mac tarzı burger|Fast Food|255,12.0,22.0,13.0|1 adet:220|
+Whopper tarzı burger|Fast Food|235,11.0,18.0,13.5|1 adet:290|
+Tavuk burger|Fast Food|250,12.0,27.0,10.5|1 adet:180|chicken burger
+Pizza (margarita)|Fast Food|255,11.0,31.0,9.5|1 dilim (orta boy pizza):100;1 dilim (büyük boy):130;1 küçük boy pizza:400|pizza
+Pizza (karışık)|Fast Food|270,12.0,29.0,12.0|1 dilim (orta):110;1 dilim (büyük):140;1 orta boy:880|
+Pizza (sucuklu/pepperoni)|Fast Food|285,12.5,28.5,13.5|1 dilim (orta):110;1 dilim (büyük):140|
+Hot dog|Fast Food|290,10.5,24.0,17.0|1 adet:100|sosisli
+Sosisli sandviç (büfe)|Fast Food|270,9.5,30.0,12.5|1 adet:180|
+Wrap (tavuklu)|Fast Food|215,12.0,22.0,8.5|1 adet:250|
+Taco|Fast Food|215,9.5,18.0,12.0|1 adet:100|
+Burrito|Fast Food|190,8.0,24.0,7.0|1 adet:300|
+Soğan halkası|Fast Food|330,4.5,38.0,18.0|6 adet:90;1 porsiyon:120|onion rings
+Elma dilim patates|Fast Food|185,2.8,25.0,8.5|1 porsiyon:150|
+Mozzarella stick|Fast Food|300,13.0,26.0,16.0|1 adet:25;5 adet:125|
+Sushi (maki)|Fast Food|145,4.5,28.0,1.0|1 parça:30;8 parça:240|sushi
+Sushi (somonlu nigiri)|Fast Food|160,7.0,24.0,3.5|1 adet:40|
+Döner wrap (zincir)|Fast Food|230,12.0,24.0,9.5|1 adet:270|
+Milkshake|İçecek|115,3.5,18.0,3.2|küçük:300;orta:400;büyük:500|
+Sufle|Tatlı|390,5.5,45.0,21.0|1 adet:100|
+# --- DENİZ ÜRÜNLERİ (pişmiş yemek) ---
+Hamsi tava|Balık|240,17.0,8.0,15.5|1 porsiyon:200;10 adet:120|
+Hamsili pilav|Balık|205,9.0,24.0,8.0|1 dilim:200|
+Balık buğulama|Balık|120,17.0,3.0,4.5|1 porsiyon:250|
+Kalamar tava|Balık|245,13.0,16.0,14.0|1 porsiyon:150|kalamar
+Karides güveç|Balık|165,14.0,4.0,10.0|1 porsiyon:200|
+Levrek buğulama|Balık|115,18.0,2.5,4.0|1 porsiyon:250|
+Somon ızgara|Balık|205,22.0,0.0,13.0|1 dilim:150|
+Palamut ızgara|Balık|195,24.0,0.0,11.0|1 dilim:150|
+Lüfer ızgara|Balık|165,24.0,0.0,7.5|1 adet:250|
+İstavrit tava|Balık|230,18.0,7.0,14.5|1 porsiyon:200|
+Sardalya ızgara|Balık|210,24.0,0.0,12.5|1 porsiyon:200|
+Balık köftesi|Balık|200,14.0,12.0,10.5|1 adet:40;4 adet:160|
+Ahtapot salatası|Balık|125,14.0,4.0,6.0|1 porsiyon:150|
+Midye pilaki|Balık|125,9.0,8.0,6.5|1 porsiyon:200|
+Karides tava|Balık|235,17.0,10.0,14.0|1 porsiyon:150|
+Patates kızartması (fast food)|Fast Food|312,3.4,41.0,15.0|küçük porsiyon:80;orta porsiyon:115;büyük porsiyon:150;1 avuç:30|patates kızartması, kızartma, cips (restoran)
