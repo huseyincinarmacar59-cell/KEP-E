@@ -14,6 +14,7 @@ const PORT = 3000;                                    // uygulamanın açılaca�
 const OLLAMA = "http://127.0.0.1:11434";              // Ollama'nın adresi
 const MODEL = process.env.KEPCE_MODEL || "gemma3:4b"; // kullanılacak yapay zekâ modeli
 const MAX_FOTO = 8 * 1024 * 1024;                     // en fazla 8 MB fotoğraf
+const SAATLIK_LIMIT = 30;                             // bir kişi saatte en fazla kaç fotoğraf
 
 const TALIMAT = path.join(__dirname, "abi-talimati.txt");
 const PUBLIC = path.join(__dirname, "public");
@@ -66,6 +67,22 @@ function temizle(cevap) {
   };
 }
 
+// ---- Sıra sistemi: fotoğraflar tek tek işlenir, bilgisayar kitlenmez ----
+let sira = Promise.resolve(), bekleyen = 0;
+function siraya(is) {
+  bekleyen++;
+  const p = sira.then(is, is);
+  sira = p.catch(() => {}).finally(() => bekleyen--);
+  return p;
+}
+// ---- Limit: herkes saatte en fazla SAATLIK_LIMIT fotoğraf ----
+const kullanim = new Map();
+function limitAsildi(ip) {
+  const simdi = Date.now(), liste = (kullanim.get(ip) || []).filter(t => simdi - t < 3600e3);
+  if (liste.length >= SAATLIK_LIMIT) { kullanim.set(ip, liste); return true; }
+  liste.push(simdi); kullanim.set(ip, liste); return false;
+}
+
 async function fotoAnaliz(fotoBuffer) {
   const r = await fetch(OLLAMA + "/api/chat", {
     method: "POST",
@@ -109,6 +126,10 @@ const sunucu = http.createServer((req, res) => {
   }
   // 3) Fotoğraf analizi
   if (req.method === "POST" && yol === "/analiz") {
+    if (limitAsildi(String(req.socket.remoteAddress))) {
+      req.resume();
+      return gonder(res, 429, "application/json", JSON.stringify({ hata: "Saatlik fotoğraf limitin doldu, biraz sonra tekrar dene." }));
+    }
     const parcalar = []; let boyut = 0;
     req.on("data", p => {
       boyut += p.length;
@@ -118,7 +139,8 @@ const sunucu = http.createServer((req, res) => {
     req.on("end", async () => {
       const bas = Date.now();
       try {
-        const sonuc = await fotoAnaliz(Buffer.concat(parcalar));
+        if (bekleyen > 0) console.log(`⏳ Sırada ${bekleyen} fotoğraf var...`);
+        const sonuc = await siraya(() => fotoAnaliz(Buffer.concat(parcalar)));
         console.log(`📸 Analiz tamam (${((Date.now() - bas) / 1000).toFixed(1)} sn): ` +
           sonuc.yemekler.map(y => y.ad).join(", "));
         gonder(res, 200, "application/json", JSON.stringify(sonuc));
