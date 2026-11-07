@@ -131,14 +131,42 @@ sunucu.listen(PORT, "0.0.0.0", async () => {
   for (const a of yerelAdresler()) console.log("   Telefondan:        " + a);
   console.log("   (Bilgisayarda açınca Bugün ekranında telefon için QR kod çıkar)");
   console.log("\n   Yapay zekâ modeli: " + MODEL);
-  try {
-    const r = await fetch(OLLAMA + "/api/tags");
-    const j = await r.json();
-    const var_mi = (j.models || []).some(m => m.name === MODEL || m.name.startsWith(MODEL + ":"));
-    console.log(var_mi ? "   ✅ Ollama ve model hazır.\n"
-                       : "   ⚠️  Model bulunamadı! Şunu çalıştır:  ollama pull " + MODEL + "\n");
-  } catch {
-    console.log("   ⚠️  Ollama'ya ulaşılamadı. Ollama programı açık mı?\n");
-  }
   console.log("   Kapatmak için bu pencerede Ctrl + C\n");
+  await modelHazirla();
 });
+
+// Model yoksa kendisi indirir (ilk açılışta ~3 GB, bir kere iner)
+async function modelHazirla() {
+  let j;
+  try { j = await (await fetch(OLLAMA + "/api/tags")).json(); }
+  catch {
+    console.log("   ⚠️  Ollama'ya ulaşılamadı. Başlat menüsünden Ollama'yı aç, sonra bu pencereyi kapatıp baslat.bat'ı tekrar çalıştır.\n");
+    return;
+  }
+  if ((j.models || []).some(m => m.name === MODEL || m.name === MODEL + ":latest")) {
+    console.log("   ✅ Ollama ve model hazır. Fotoğraf analizi çalışıyor!\n");
+    return;
+  }
+  console.log("   📥 Yapay zekâ modeli indiriliyor (" + MODEL + "). İlk sefere mahsus, internet hızına göre birkaç dakika sürer...");
+  try {
+    const r = await fetch(OLLAMA + "/api/pull", { method: "POST", body: JSON.stringify({ model: MODEL, stream: true }) });
+    const okuyucu = r.body.getReader(); const dec = new TextDecoder(); let tampon = "", son = -1;
+    while (true) {
+      const { done, value } = await okuyucu.read(); if (done) break;
+      tampon += dec.decode(value, { stream: true });
+      const satirlar = tampon.split("\n"); tampon = satirlar.pop();
+      for (const s of satirlar) {
+        if (!s.trim()) continue;
+        const d = JSON.parse(s);
+        if (d.error) throw new Error(d.error);
+        if (d.total && d.completed) {
+          const yuzde = Math.floor(d.completed / d.total * 100);
+          if (yuzde !== son && yuzde % 5 === 0) { son = yuzde; process.stdout.write("\r   📥 %" + yuzde + "   "); }
+        }
+        if (d.status === "success") console.log("\n   ✅ Model indi! Fotoğraf analizi artık çalışıyor.\n");
+      }
+    }
+  } catch (e) {
+    console.log("\n   ❌ Model indirilemedi: " + e.message + "\n   İnterneti kontrol edip baslat.bat'ı tekrar çalıştır.\n");
+  }
+}

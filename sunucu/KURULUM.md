@@ -19,7 +19,9 @@ bir yapay zekâ kuracaksın. Toplam süre ~20-30 dakika (çoğu indirme beklemes
 2. Kurulunca sağ alttaki saat yanında 🦙 lama simgesi çıkar. Bu, Ollama'nın açık olduğu anlamına gelir.
 
 ## 3. Adım — Yapay zekâ modelini indir (~3,3 GB)
-`cmd` penceresine şunu yaz:
+> 💡 Bu adımı atlayabilirsin: `baslat.bat` model yoksa onu kendisi indirir ve ilerlemeyi % olarak gösterir.
+
+Elle indirmek istersen `cmd` penceresine şunu yaz:
 ```
 ollama pull gemma3:4b
 ```
