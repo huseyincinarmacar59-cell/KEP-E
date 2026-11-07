@@ -95,6 +95,13 @@
   .macros b{display:block;font-size:16px}.macros span{font-size:11px;color:var(--muted)}
   .food .info span.muted{display:block}
   .sec{font-weight:800;font-size:14px;margin:6px 2px 8px}
+  .daynav{display:flex;align-items:center;justify-content:space-between;background:#fff;border-radius:16px;padding:6px;margin-bottom:10px;box-shadow:var(--shadow)}
+  .daynav button{width:44px;height:40px;border:none;background:var(--bg);border-radius:12px;font-size:26px;font-weight:800;cursor:pointer;color:var(--ink);line-height:1}
+  .daynav button:disabled{opacity:.25}
+  #dLbl{font-weight:800;font-size:16px;text-align:center;flex:1}
+  .pastbar{background:#fff4e0;border-radius:12px;padding:10px 12px;font-size:13px;margin-bottom:10px;text-align:center}
+  .pastbar b{color:var(--accent);cursor:pointer}
+  #hist .col{cursor:pointer}#hist .b{background:var(--accent2)}#hist .col.sel .b{background:var(--accent)}#hist .col.sel span{color:var(--accent)}
   /* sheet */
   .overlay{position:fixed;inset:0;background:rgba(30,20,10,.45);display:none;align-items:flex-end;justify-content:center;z-index:50}
   .overlay.show{display:flex}
@@ -200,6 +207,8 @@
       <div style="display:flex;align-items:center;gap:12px"><span style="font-size:32px">📱</span>
       <div style="flex:1"><b>Telefonuna kur</b><div class="muted">QR kodu telefonunla okut, ana ekrana ekle</div></div><span style="font-size:20px">›</span></div>
     </div>
+    <div class="daynav"><button id="dPrev" aria-label="Önceki gün">‹</button><div id="dLbl"></div><button id="dNext" aria-label="Sonraki gün">›</button></div>
+    <div class="pastbar" id="pastBar" style="display:none">📅 <span id="pastTxt"></span> kayıtlarını görüyorsun · <b id="backToday">Bugüne dön</b></div>
     <div class="card hero" id="hero"></div>
 
     <div class="card">
@@ -220,8 +229,15 @@
     </div>
 
     <div class="card">
-      <h2>📋 Bugünkü kayıtlar</h2>
+      <h2>📋 <span class="dword">Bugün</span> yediklerin</h2>
       <div id="log"></div>
+    </div>
+
+    <div class="card">
+      <h2>📅 Son 7 gün</h2>
+      <p class="muted" style="margin-bottom:6px">Bir güne dokun, o günün kayıtlarını aç.</p>
+      <div class="week" id="hist"></div>
+      <div class="muted" id="histAvg" style="text-align:center;margin-top:8px"></div>
     </div>
   </section>
 
@@ -240,7 +256,7 @@
   <!-- SPOR -->
   <section class="view" id="v-sport">
     <div class="card">
-      <h2>🏃 Bugünkü spor</h2>
+      <h2>🏃 <span class="dword">Bugün</span> spor</h2>
       <div style="display:flex;gap:10px">
         <div style="flex:1;background:var(--bg);border-radius:14px;padding:12px;text-align:center"><b style="font-size:26px" id="spMin">0</b><div class="muted">dakika</div></div>
         <div style="flex:1;background:var(--bg);border-radius:14px;padding:12px;text-align:center"><b style="font-size:26px;color:var(--green)" id="spKcal">0</b><div class="muted">kcal yakıldı (yaklaşık)</div></div>
@@ -360,14 +376,24 @@ const SPORTS=[["Yürüyüş","🚶",3.5],["Tempolu yürüyüş","🚶‍♂️",
 const GOALS=[["ver","⬇️","Kilo vermek"],["koru","⚖️","Kilomu korumak"],["al","⬆️","Kilo almak"],["saglik","💚","Daha sağlıklı yaşamak"]];
 
 // ---------- depolama ----------
-const dayKey=d=>"kepce-"+d.toISOString().slice(0,10);
+// Türkiye saatine (cihazın yerel saatine) göre gün: gece 00:00'da yeni gün başlar
+const p2=n=>String(n).padStart(2,"0");
+const dayKey=d=>"kepce-"+d.getFullYear()+"-"+p2(d.getMonth()+1)+"-"+p2(d.getDate());
+const startOf=d=>new Date(d.getFullYear(),d.getMonth(),d.getDate());
 const ls={get(k){try{const r=localStorage.getItem(k);return r?JSON.parse(r):null}catch(e){return null}},
           set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
-const key=dayKey(new Date());
-let S=Object.assign({log:[],water:0,moves:[false,false,false],sport:[]},ls.get(key)||{});
-// eski demo kayıtlarını yeni biçime çevir
-S.log=S.log.filter(l=>l.f===undefined);
-S.sport=S.sport||[];
+let viewDate=startOf(new Date());
+let key=dayKey(viewDate);
+let todayKey=key;
+function readDay(k){
+  const s=Object.assign({log:[],water:0,moves:[false,false,false],sport:[]},ls.get(k)||{});
+  s.log=(s.log||[]).filter(l=>l.f===undefined); s.sport=s.sport||[]; s.moves=s.moves||[false,false,false];
+  return s;
+}
+let S=readDay(key);
+const isToday=()=>key===dayKey(new Date());
+const dayName=d=>{const t=startOf(new Date()),diff=Math.round((t-startOf(d))/864e5);
+  return diff===0?"Bugün":diff===1?"Dün":d.toLocaleDateString("tr-TR",{day:"numeric",month:"long",weekday:"long"});};
 let P=ls.get("kepce-profile");
 let memProfile=null; // localStorage çalışmazsa
 const save=()=>ls.set(key,S);
@@ -422,6 +448,12 @@ $("oSave").onclick=()=>{
 // ---------- render ----------
 function render(){
   if(!P) return;
+  const td=isToday();
+  $("dLbl").textContent=dayName(viewDate)+(td?" · "+viewDate.toLocaleDateString("tr-TR",{day:"numeric",month:"long"}):"");
+  $("dNext").disabled=td;
+  $("pastBar").style.display=td?"none":"block";$("pastTxt").textContent=dayName(viewDate);
+  document.querySelectorAll(".dword").forEach(e=>e.textContent=td?"Bugün":dayName(viewDate));
+  renderHist();
   const C=calc(P);
   const eaten=S.log.reduce((a,l)=>a+Math.round(l.k*l.q),0);
   const mac=k=>Math.round(S.log.reduce((a,l)=>a+(l[k]||0)*l.q,0));
@@ -467,6 +499,17 @@ function render(){
     :`<div class="empty">Henüz kayıt yok.<br>➕ Ekle sekmesinden ilk yemeğini ekle!</div>`;
   renderSport(C);renderProfile(C);renderBadges(C);
 }
+function dayTotal(rec){return rec?(rec.log||[]).filter(l=>l.f===undefined).reduce((a,l)=>a+Math.round(l.k*l.q),0):0;}
+function renderHist(){
+  const days=[];
+  for(let i=6;i>=0;i--){const d=startOf(new Date());d.setDate(d.getDate()-i);const k=dayKey(d);
+    days.push([d,k,k===key?dayTotal(S):dayTotal(ls.get(k))]);}
+  const mx=Math.max(500,...days.map(x=>x[2]));
+  $("hist").innerHTML=days.map(([d,k,v])=>`<div class="col ${k===key?'sel':''}" data-k="${d.getTime()}"><b style="font-size:10px">${v||""}</b><div class="b ${v?'':'z'}" style="height:${Math.max(4,v/mx*80)}px"></div><span>${d.toLocaleDateString("tr-TR",{weekday:"short"})}</span></div>`).join("");
+  const dolu=days.filter(x=>x[2]>0);
+  $("histAvg").textContent=dolu.length?`Kayıtlı ${dolu.length} günün ortalaması: ${Math.round(dolu.reduce((a,x)=>a+x[2],0)/dolu.length)} kcal`:"";
+}
+function goDay(d){viewDate=startOf(d);key=dayKey(viewDate);S=readDay(key);render();window.scrollTo(0,0);}
 function mealPills(){return MEALS.map(m=>{const k=S.log.filter(l=>l.meal===m).reduce((a,l)=>a+Math.round(l.k*l.q),0);return `<div class="meal-pill"><b>${k}</b><span>${m}</span></div>`}).join("")}
 
 function renderSport(C){
@@ -474,7 +517,7 @@ function renderSport(C){
   $("spMin").textContent=min;$("spKcal").textContent=kc;
   const days=[];let weekTotal=0;
   for(let i=6;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);
-    const rec=i===0?S:ls.get(dayKey(d));const m=rec&&rec.sport?rec.sport.reduce((a,s)=>a+s.min,0):0;weekTotal+=m;
+    const rec=dayKey(d)===key?S:ls.get(dayKey(d));const m=rec&&rec.sport?rec.sport.reduce((a,s)=>a+s.min,0):0;weekTotal+=m;
     days.push([d.toLocaleDateString("tr-TR",{weekday:"short"}),m]);}
   if(C.adult){$("spGoalTxt").textContent=`Haftalık hedef: ${weekTotal}/${C.weekSport} dakika`;$("spGoalBar").style.width=Math.min(100,weekTotal/C.weekSport*100)+"%";}
   else{$("spGoalTxt").textContent=`Günlük hedef: ${min}/60 dakika`;$("spGoalBar").style.width=Math.min(100,min/60*100)+"%";}
@@ -610,7 +653,7 @@ $("addBtn").onclick=()=>{
   if(f.s==="kendi") entry={n:f.a,e:f.em,u:f.o[0][0],k:f.ck,q:qty,c:f.c,meal,mp:0,mk:0,my:0};
   else if(pi===-1) entry={n:f.a,e:f.em,u:Math.round(g)+" g",k:Math.round(f.e*g/100),q:1,c:f.c,meal,mp:+(f.p*g/100).toFixed(1),mk:+(f.k*g/100).toFixed(1),my:+(f.y*g/100).toFixed(1)};
   else{const pg=f.o[pi][1];entry={n:f.a,e:f.em,u:`${f.o[pi][0]} (${pg} g)`,k:Math.round(f.e*pg/100),q:qty,c:f.c,meal,mp:+(f.p*pg/100).toFixed(1),mk:+(f.k*pg/100).toFixed(1),my:+(f.y*pg/100).toFixed(1)};}
-  S.log.push(entry);
+  entry.t=Date.now();S.log.push(entry);
   RECENT=[f.a].concat(RECENT.filter(n=>n!==f.a)).slice(0,15);ls.set("kepce-recent",RECENT);
   save();render();renderCats();$("ov").classList.remove("show");toast(`${f.em} ${meal} öğününe eklendi`);
   if(!$("q").value) renderFoods();
@@ -747,6 +790,19 @@ document.querySelector("nav").onclick=e=>{const b=e.target.closest("button");if(
 
 renderFoods();
 if(P) render(); else openOb();
+$("dPrev").onclick=()=>{const d=new Date(viewDate);d.setDate(d.getDate()-1);goDay(d);};
+$("dNext").onclick=()=>{if(isToday())return;const d=new Date(viewDate);d.setDate(d.getDate()+1);goDay(d);};
+$("backToday").onclick=()=>goDay(new Date());
+$("hist").onclick=e=>{const c=e.target.closest(".col");if(c)goDay(new Date(+c.dataset.k));};
+// Uygulama açıkken gece yarısı geçerse yeni güne otomatik geç
+function gunKontrol(){
+  const k=dayKey(new Date());
+  if(k!==todayKey){const bugunuGoruyordu=(key===todayKey);todayKey=k;
+    $("today").textContent=new Date().toLocaleDateString("tr-TR",{day:"numeric",month:"long",weekday:"long"});
+    if(bugunuGoruyordu) goDay(new Date()); else render();}
+}
+setInterval(gunKontrol,30000);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden)gunKontrol();});
 // Telefonda uygulama gibi çalışsın (sadece localhost / https'te aktif olur)
 if("serviceWorker" in navigator && (location.protocol==="https:"||location.hostname==="localhost") && !location.hostname.endsWith("claude.ai")){
   try{navigator.serviceWorker.register("sw.js").catch(()=>{});}catch(e){}
