@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kepçe – Türk Mutfağı Takip (Demo)</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fbf6ef; --card:#ffffff; --ink:#2b2118; --muted:#8a7a6b;
+    --accent:#d9572b; --accent2:#f2a65a; --green:#3f9b5f; --blue:#3a86c8;
+    --line:#efe5d8; --shadow:0 6px 20px rgba(80,50,20,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Nunito',system-ui,sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
+  .app{max-width:480px;margin:0 auto;padding:18px 16px 96px}
+  header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:24px}
+  .logo .ic{width:40px;height:40px;border-radius:12px;background:var(--accent);display:grid;place-items:center;color:#fff;font-size:22px}
+  .date{font-size:13px;color:var(--muted);font-weight:700;text-align:right}
+  .badge-demo{font-size:11px;background:#fff0e6;color:var(--accent);padding:3px 8px;border-radius:20px;font-weight:800}
+  .card{background:var(--card);border-radius:20px;padding:16px;box-shadow:var(--shadow);margin-bottom:14px}
+  h2{font-size:17px;font-weight:800;margin-bottom:10px}
+  .muted{color:var(--muted);font-size:13px}
+  .hero{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff}
+  .hero .big{font-size:44px;font-weight:900;line-height:1}
+  .hero .row{display:flex;justify-content:space-between;align-items:flex-end}
+  .hero .muted{color:rgba(255,255,255,.88)}
+  .bar{height:10px;background:rgba(255,255,255,.3);border-radius:10px;overflow:hidden;margin-top:12px}
+  .bar i{display:block;height:100%;background:#fff;border-radius:10px;transition:width .3s}
+  .bar.dark{background:var(--line)} .bar.dark i{background:var(--green)}
+  .meals{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}
+  .meal-pill{background:rgba(255,255,255,.2);border-radius:12px;padding:8px 4px;text-align:center}
+  .meal-pill b{display:block;font-size:15px}
+  .meal-pill span{font-size:11px}
+  .stats3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+  .stat{background:rgba(255,255,255,.2);border-radius:12px;padding:8px;text-align:center}
+  .stat b{display:block;font-size:16px}.stat span{font-size:11px}
+  .plan li{list-style:none;display:flex;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line);font-size:14px;line-height:1.45}
+  .plan li:last-child{border-bottom:none}
+  .plan li .e{font-size:18px;flex-shrink:0}
+  .warn{background:#fff4e0;border-radius:12px;padding:10px 12px;font-size:13px;line-height:1.5;margin-top:8px}
+  /* water */
+  .glasses{display:grid;gap:6px;margin:8px 0}
+  .glass{aspect-ratio:3/4;border:2px solid var(--blue);border-radius:6px 6px 10px 10px;cursor:pointer;position:relative;overflow:hidden;background:#fff;transition:transform .1s}
+  .glass:active{transform:scale(.92)}
+  .glass.full::after{content:"";position:absolute;left:0;right:0;bottom:0;height:80%;background:var(--blue);opacity:.85}
+  /* moves */
+  .move{display:flex;align-items:center;gap:12px;padding:10px;border:1.5px solid var(--line);border-radius:14px;margin-bottom:8px;cursor:pointer;user-select:none}
+  .move.done{border-color:var(--green);background:#eef8f1}
+  .chk{width:24px;height:24px;border-radius:8px;border:2px solid var(--line);display:grid;place-items:center;font-size:14px;color:#fff;flex-shrink:0}
+  .move.done .chk{background:var(--green);border-color:var(--green)}
+  /* log */
+  .log-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+  .log-item:last-child{border-bottom:none}
+  .log-item .n{font-weight:700}
+  .log-item .s{font-size:12px;color:var(--muted)}
+  .del{background:none;border:none;color:var(--muted);font-size:18px;cursor:pointer;padding:4px 8px}
+  .kcal{font-weight:800;color:var(--accent)}
+  .kcal.g{color:var(--green)}
+  /* search */
+  .search,.inp,select.inp{width:100%;padding:13px 14px;border-radius:14px;border:2px solid var(--line);font:inherit;font-size:16px;background:#fff;outline:none;color:var(--ink)}
+  .search:focus,.inp:focus{border-color:var(--accent)}
+  .chips{display:flex;gap:6px;overflow-x:auto;padding:10px 0 4px;scrollbar-width:none}
+  .chip{flex-shrink:0;padding:7px 12px;border-radius:20px;background:#fff;border:1.5px solid var(--line);font-weight:700;font-size:13px;cursor:pointer}
+  .chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .food{display:flex;align-items:center;gap:12px;padding:12px;background:#fff;border-radius:14px;margin-bottom:8px;cursor:pointer;box-shadow:0 2px 8px rgba(80,50,20,.05)}
+  .food .em{font-size:28px;width:44px;height:44px;display:grid;place-items:center;background:var(--bg);border-radius:12px;flex-shrink:0}
+  .food .info{flex:1}
+  .food .info b{display:block}
+  .photo-btn{display:flex;align-items:center;gap:14px;width:100%;padding:16px;border-radius:18px;border:2px dashed var(--accent);background:#fff6f0;cursor:pointer;margin-bottom:12px;font:inherit;text-align:left;color:var(--ink)}
+  .photo-btn .e{font-size:34px}
+  .photo-btn b{display:block;font-size:16px}
+  /* sheet */
+  .overlay{position:fixed;inset:0;background:rgba(30,20,10,.45);display:none;align-items:flex-end;justify-content:center;z-index:50}
+  .overlay.show{display:flex}
+  .sheet{background:#fff;width:100%;max-width:480px;border-radius:24px 24px 0 0;padding:22px 18px 28px;animation:up .2s ease;max-height:92vh;overflow-y:auto}
+  @keyframes up{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+  .qty{display:flex;align-items:center;justify-content:center;gap:18px;margin:16px 0}
+  .qty button,.mini button{width:46px;height:46px;border-radius:50%;border:2px solid var(--line);background:#fff;font-size:22px;font-weight:800;cursor:pointer;color:var(--ink)}
+  .qty .v{font-size:30px;font-weight:900;min-width:70px;text-align:center}
+  .seg{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:12px 0 18px}
+  .seg.s2{grid-template-columns:repeat(2,1fr)}
+  .seg button{padding:10px 4px;border-radius:12px;border:1.5px solid var(--line);background:#fff;font:inherit;font-weight:700;font-size:13px;cursor:pointer;color:var(--ink)}
+  .seg button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .btn{width:100%;padding:15px;border:none;border-radius:16px;background:var(--accent);color:#fff;font:inherit;font-weight:800;font-size:16px;cursor:pointer}
+  .btn:disabled{opacity:.5}
+  .btn.ghost{background:var(--bg);color:var(--ink);margin-top:8px}
+  .btn.sm{padding:10px;font-size:14px;width:auto}
+  /* photo result */
+  .pimg{width:100%;max-height:220px;object-fit:cover;border-radius:16px;margin-bottom:12px}
+  .pres{display:flex;align-items:center;gap:10px;padding:10px;border:1.5px solid var(--line);border-radius:14px;margin-bottom:8px}
+  .pres.off{opacity:.4}
+  .pres .em{font-size:26px}
+  .pres .info{flex:1}
+  .pres .info b{display:block;font-size:15px}
+  .mini{display:flex;align-items:center;gap:6px}
+  .mini button{width:30px;height:30px;font-size:16px}
+  .spin{width:44px;height:44px;border:4px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:sp 1s linear infinite;margin:18px auto}
+  @keyframes sp{to{transform:rotate(360deg)}}
+  /* badges */
+  .badges{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .bdg{text-align:center;padding:14px 6px;border-radius:16px;background:var(--bg);opacity:.45;filter:grayscale(1)}
+  .bdg.on{opacity:1;filter:none;background:#fff4e8;box-shadow:inset 0 0 0 2px var(--accent2)}
+  .bdg .e{font-size:30px}
+  .bdg b{display:block;font-size:12px;margin-top:4px}
+  /* sport */
+  .sports{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .sp{padding:12px 4px;border-radius:14px;background:#fff;border:1.5px solid var(--line);text-align:center;cursor:pointer;font-weight:700;font-size:12px}
+  .sp .e{font-size:28px;display:block;margin-bottom:2px}
+  .week{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;align-items:end;height:110px;margin-top:12px}
+  .week .col{display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end}
+  .week .b{width:100%;border-radius:8px 8px 4px 4px;background:var(--green);min-height:4px}
+  .week .b.z{background:var(--line)}
+  .week span{font-size:11px;color:var(--muted);font-weight:700}
+  /* onboarding */
+  .ob{position:fixed;inset:0;background:var(--bg);z-index:70;overflow-y:auto;display:none}
+  .ob.show{display:block}
+  .ob .in{max-width:480px;margin:0 auto;padding:28px 18px 40px}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-weight:800;font-size:14px;margin-bottom:6px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .goal{display:flex;align-items:center;gap:12px;padding:13px;border:2px solid var(--line);border-radius:14px;margin-bottom:8px;cursor:pointer;background:#fff}
+  .goal.on{border-color:var(--accent);background:#fff6f0}
+  .goal .e{font-size:24px}
+  .err{color:#c0392b;font-size:13px;font-weight:700;min-height:18px;margin-bottom:6px}
+  /* nav */
+  nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:center;z-index:40}
+  nav .in{display:flex;max-width:480px;width:100%}
+  nav button{flex:1;background:none;border:none;padding:10px 0 14px;font:inherit;font-size:11px;font-weight:700;color:var(--muted);cursor:pointer}
+  nav button .e{display:block;font-size:22px;margin-bottom:2px}
+  nav button.on{color:var(--accent)}
+  .view{display:none}.view.on{display:block}
+  .empty{text-align:center;padding:20px;color:var(--muted)}
+  .toast{position:fixed;top:16px;left:50%;transform:translateX(-50%) translateY(-80px);background:var(--ink);color:#fff;padding:10px 18px;border-radius:20px;font-weight:700;font-size:14px;transition:transform .25s;z-index:80;max-width:90%;text-align:center}
+  .toast.show{transform:translateX(-50%) translateY(0)}
+  .note{font-size:12px;color:var(--muted);text-align:center;margin-top:6px;line-height:1.5}
+  .prow{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
+  .prow:last-child{border-bottom:none}
+</style>
+</head>
+<body>
+
+<!-- ONBOARDING -->
+<div class="ob" id="ob"><div class="in">
+  <div class="logo" style="margin-bottom:6px"><div class="ic">🥄</div>Kepçe</div>
+  <p class="muted" style="margin-bottom:20px">Hoş geldin! Sana uygun bir plan çıkarmamız için birkaç bilgi lazım.</p>
+  <div class="field"><label>Adın</label><input class="inp" id="oName" placeholder="İsteğe bağlı"></div>
+  <div class="grid2">
+    <div class="field"><label>Yaş</label><input class="inp" id="oAge" type="number" inputmode="numeric" placeholder="örn. 25"></div>
+    <div class="field"><label>Cinsiyet</label><select class="inp" id="oSex"><option value="e">Erkek</option><option value="k">Kadın</option></select></div>
+    <div class="field"><label>Boy (cm)</label><input class="inp" id="oH" type="number" inputmode="numeric" placeholder="örn. 175"></div>
+    <div class="field"><label>Kilo (kg)</label><input class="inp" id="oW" type="number" inputmode="decimal" placeholder="örn. 80"></div>
+  </div>
+  <div class="field"><label>Ne kadar hareketlisin?</label>
+    <select class="inp" id="oAct">
+      <option value="1.2">Az (çoğunlukla oturuyorum)</option>
+      <option value="1.375" selected>Biraz (haftada 1-3 gün spor)</option>
+      <option value="1.55">Orta (haftada 3-5 gün spor)</option>
+      <option value="1.725">Çok (neredeyse her gün spor)</option>
+    </select></div>
+  <div class="field"><label>Hedefin ne?</label><div id="oGoals"></div></div>
+  <div class="err" id="oErr"></div>
+  <button class="btn" id="oSave">Planımı oluştur 🚀</button>
+</div></div>
+
+<div class="app">
+  <header>
+    <div class="logo"><div class="ic">🥄</div>Kepçe</div>
+    <div class="date"><div id="today"></div><span class="badge-demo">DEMO</span></div>
+  </header>
+
+  <!-- BUGÜN -->
+  <section class="view on" id="v-home">
+    <div class="card hero" id="hero"></div>
+
+    <div class="card">
+      <h2>🎯 Yapman gerekenler</h2>
+      <ul class="plan" id="plan"></ul>
+      <div id="planWarn"></div>
+    </div>
+
+    <div class="card">
+      <h2>💧 Su <span class="muted" id="waterTxt"></span></h2>
+      <div class="glasses" id="glasses"></div>
+      <div class="muted">Bardağa dokun, içtiğin suyu işaretle.</div>
+    </div>
+
+    <div class="card">
+      <h2>🚶 Günün mini hedefleri</h2>
+      <div id="moves"></div>
+    </div>
+
+    <div class="card">
+      <h2>📋 Bugünkü kayıtlar</h2>
+      <div id="log"></div>
+    </div>
+  </section>
+
+  <!-- EKLE -->
+  <section class="view" id="v-add">
+    <button class="photo-btn" id="photoBtn"><span class="e">📸</span><span><b>Tabağının fotoğrafını çek</b><span class="muted">Yapay zekâ yemekleri tanısın, kaloriyi tahmin etsin</span></span></button>
+    <input type="file" id="photoIn" accept="image/*" capture="environment" hidden>
+    <input class="search" id="q" placeholder="🔍 Yemek ara: mercimek, lahmacun, simit..." autocomplete="off">
+    <div class="chips" id="cats"></div>
+    <div id="foods" style="margin-top:8px"></div>
+    <p class="note">Kalori değerleri ev ölçülerine göre yaklaşık değerlerdir.</p>
+  </section>
+
+  <!-- SPOR -->
+  <section class="view" id="v-sport">
+    <div class="card">
+      <h2>🏃 Bugünkü spor</h2>
+      <div style="display:flex;gap:10px">
+        <div style="flex:1;background:var(--bg);border-radius:14px;padding:12px;text-align:center"><b style="font-size:26px" id="spMin">0</b><div class="muted">dakika</div></div>
+        <div style="flex:1;background:var(--bg);border-radius:14px;padding:12px;text-align:center"><b style="font-size:26px;color:var(--green)" id="spKcal">0</b><div class="muted">kcal yakıldı (yaklaşık)</div></div>
+      </div>
+      <div style="margin-top:14px"><div class="muted" id="spGoalTxt"></div><div class="bar dark"><i id="spGoalBar" style="width:0"></i></div></div>
+    </div>
+    <div class="card">
+      <h2>➕ Aktivite ekle</h2>
+      <div class="sports" id="sports"></div>
+    </div>
+    <div class="card">
+      <h2>📊 Son 7 gün (dakika)</h2>
+      <div class="week" id="week"></div>
+    </div>
+    <div class="card">
+      <h2>📋 Bugünkü aktiviteler</h2>
+      <div id="spLog"></div>
+    </div>
+  </section>
+
+  <!-- PROFİL -->
+  <section class="view" id="v-profile">
+    <div class="card">
+      <h2>👤 Profilim</h2>
+      <div id="profile"></div>
+      <button class="btn ghost" id="editProf">Bilgilerimi düzenle</button>
+    </div>
+    <div class="card">
+      <h2>🏆 Rozetler</h2>
+      <div class="badges" id="badges"></div>
+    </div>
+    <div class="card">
+      <h2>ℹ️ Bu demo hakkında</h2>
+      <p class="muted" style="line-height:1.6">Kepçe, Türk mutfağını ev ölçüleriyle takip etmen ve sağlıklı alışkanlıklar kazanman için tasarlandı. Hesaplamalar genel formüllere dayanan tahminlerdir; tıbbi tavsiye değildir. Sağlık hedeflerin için bir doktora ya da diyetisyene danışman en doğrusu.</p>
+    </div>
+  </section>
+</div>
+
+<nav><div class="in">
+  <button class="on" data-v="home"><span class="e">🏠</span>Bugün</button>
+  <button data-v="add"><span class="e">➕</span>Ekle</button>
+  <button data-v="sport"><span class="e">🏃</span>Spor</button>
+  <button data-v="profile"><span class="e">👤</span>Profil</button>
+</div></nav>
+
+<!-- Yemek ekleme -->
+<div class="overlay" id="ov"><div class="sheet">
+  <div style="display:flex;align-items:center;gap:12px">
+    <div style="font-size:40px" id="sEm"></div>
+    <div><h2 style="margin:0" id="sName"></h2><div class="muted" id="sUnit"></div></div>
+  </div>
+  <div class="qty"><button id="minus">−</button><div class="v" id="sQty">1</div><button id="plus">+</button></div>
+  <div style="text-align:center;font-size:18px"><span class="kcal" id="sKcal"></span> kcal</div>
+  <div class="seg" id="seg"></div>
+  <button class="btn" id="addBtn">Ekle</button>
+  <button class="btn ghost" id="cancel">Vazgeç</button>
+</div></div>
+
+<!-- Spor ekleme -->
+<div class="overlay" id="ovS"><div class="sheet">
+  <div style="display:flex;align-items:center;gap:12px">
+    <div style="font-size:40px" id="ssEm"></div>
+    <div><h2 style="margin:0" id="ssName"></h2><div class="muted">Kaç dakika yaptın?</div></div>
+  </div>
+  <div class="qty"><button id="sMinus">−</button><div><div class="v" id="ssMin">30</div><div class="muted" style="text-align:center">dakika</div></div><button id="sPlus">+</button></div>
+  <div style="text-align:center;font-size:18px;margin-bottom:18px">≈ <span class="kcal g" id="ssKcal"></span> kcal yakılır</div>
+  <button class="btn" id="sAdd" style="background:var(--green)">Kaydet</button>
+  <button class="btn ghost" id="sCancel">Vazgeç</button>
+</div></div>
+
+<!-- Foto analiz -->
+<div class="overlay" id="ovP"><div class="sheet" id="pSheet"></div></div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const FOODS = [
+  ["Mercimek çorbası","🥣","1 kase",150,"Çorba"],["Yayla çorbası","🥣","1 kase",130,"Çorba"],
+  ["Ezogelin çorbası","🥣","1 kase",140,"Çorba"],["Tavuk suyu çorba","🥣","1 kase",110,"Çorba"],
+  ["Kuru fasulye","🫘","1 kepçe",220,"Ev yemeği"],["Nohut yemeği","🫘","1 kepçe",210,"Ev yemeği"],
+  ["Pirinç pilavı","🍚","1 porsiyon",250,"Ev yemeği"],["Bulgur pilavı","🍚","1 porsiyon",200,"Ev yemeği"],
+  ["Karnıyarık","🍆","1 adet",350,"Ev yemeği"],["İmam bayıldı","🍆","1 adet",250,"Ev yemeği"],
+  ["Taze fasulye","🥗","1 kepçe",130,"Ev yemeği"],["Mantı","🥟","1 porsiyon",450,"Ev yemeği"],
+  ["Kısır","🥗","1 porsiyon",200,"Ev yemeği"],
+  ["Menemen","🍳","1 porsiyon",250,"Kahvaltı"],["Haşlanmış yumurta","🥚","1 adet",75,"Kahvaltı"],
+  ["Beyaz peynir","🧀","1 dilim",80,"Kahvaltı"],["Zeytin","🫒","5 adet",40,"Kahvaltı"],
+  ["Simit","🥯","1 adet",300,"Kahvaltı"],["Ekmek","🍞","1 dilim",65,"Kahvaltı"],
+  ["Bal","🍯","1 tatlı kaşığı",30,"Kahvaltı"],["Su böreği","🥧","1 dilim",300,"Kahvaltı"],
+  ["Lahmacun","🫓","1 adet",280,"Dışarıda"],["Döner","🥙","yarım ekmek",600,"Dışarıda"],
+  ["İskender","🍖","1 porsiyon",850,"Dışarıda"],["Kıymalı pide","🫓","1 adet",700,"Dışarıda"],
+  ["Çiğ köfte dürüm","🌯","1 adet",350,"Dışarıda"],["Izgara köfte","🍖","4 adet",250,"Dışarıda"],
+  ["Tavuk şiş","🍢","1 porsiyon",300,"Dışarıda"],["Kumpir","🥔","1 adet",700,"Dışarıda"],
+  ["Baklava","🍯","1 dilim",160,"Tatlı"],["Sütlaç","🍮","1 kase",250,"Tatlı"],
+  ["Elma","🍎","1 orta boy",80,"Meyve"],["Muz","🍌","1 adet",100,"Meyve"],["Mandalina","🍊","1 adet",45,"Meyve"],
+  ["Ayran","🥛","1 bardak",75,"İçecek"],["Çay (şekersiz)","🍵","1 ince belli",2,"İçecek"],
+  ["Çay (1 şekerli)","🍵","1 ince belli",22,"İçecek"],["Türk kahvesi (sade)","☕","1 fincan",10,"İçecek"],
+  ["Kola","🥤","1 kutu",140,"İçecek"]
+];
+const CATS=["Hepsi","Kahvaltı","Çorba","Ev yemeği","Dışarıda","Tatlı","Meyve","İçecek"];
+const MEALS=["Kahvaltı","Öğle","Akşam","Ara"];
+const MOVES=[["🚶","10 dakika yürüyüş"],["🪜","Asansör yerine merdiven"],["🤸","5 dakika esneme"]];
+// [ad, emoji, MET]
+const SPORTS=[["Yürüyüş","🚶",3.5],["Tempolu yürüyüş","🚶‍♂️",4.3],["Koşu","🏃",8],["Bisiklet","🚴",6.8],
+  ["Futbol","⚽",7],["Basketbol","🏀",6.5],["Yüzme","🏊",6],["Fitness","🏋️",5],["İp atlama","🪢",10],
+  ["Dans","💃",5],["Voleybol","🏐",4],["Yoga","🧘",2.5]];
+const GOALS=[["ver","⬇️","Kilo vermek"],["koru","⚖️","Kilomu korumak"],["al","⬆️","Kilo almak"],["saglik","💚","Daha sağlıklı yaşamak"]];
+
+// ---------- depolama ----------
+const dayKey=d=>"kepce-"+d.toISOString().slice(0,10);
+const ls={get(k){try{const r=localStorage.getItem(k);return r?JSON.parse(r):null}catch(e){return null}},
+          set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const key=dayKey(new Date());
+let S=Object.assign({log:[],water:0,moves:[false,false,false],sport:[]},ls.get(key)||{});
+// eski demo kayıtlarını yeni biçime çevir
+S.log=S.log.map(l=>l.f!==undefined?{n:FOODS[l.f][0],e:FOODS[l.f][1],u:FOODS[l.f][2],k:FOODS[l.f][3],c:FOODS[l.f][4],q:l.q,meal:l.meal}:l);
+S.sport=S.sport||[];
+let P=ls.get("kepce-profile");
+let memProfile=null; // localStorage çalışmazsa
+const save=()=>ls.set(key,S);
+
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+$("today").textContent=new Date().toLocaleDateString("tr-TR",{day:"numeric",month:"long",weekday:"long"});
+function toast(t){const el=$("toast");el.textContent=t;el.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove("show"),1800)}
+
+// ---------- hesaplamalar ----------
+function calc(p){
+  const adult=p.age>=18;
+  const bmi=p.w/((p.h/100)**2);
+  const bmr=10*p.w+6.25*p.h-5*p.age+(p.sex==="e"?5:-161);
+  const tdee=Math.round(bmr*p.act/10)*10;
+  let target=null, note=null;
+  if(adult){
+    const floor=p.sex==="e"?1500:1200;
+    if(p.goal==="ver"){
+      if(bmi<18.5){target=tdee;note="Kilon zaten düşük görünüyor, kilo vermen önerilmez. Bir doktora danışmanı tavsiye ederiz.";}
+      else target=Math.max(floor,tdee-400);
+    } else if(p.goal==="al") target=tdee+300;
+    else target=tdee;
+  }
+  let water=Math.round(p.w*0.033/0.25); water=Math.min(12,Math.max(6,water));
+  if(!adult) water=8;
+  const weekSport=adult?150:420;
+  return {adult,bmi,tdee,target,water,weekSport,note};
+}
+function bmiCat(b){return b<18.5?"Zayıf":b<25?"Normal":b<30?"Fazla kilolu":"Obez"}
+const sportKcal=(met,min)=>Math.round(met*(P?P.w:70)*min/60);
+
+// ---------- onboarding ----------
+let oGoal="saglik";
+function renderGoals(){$("oGoals").innerHTML=GOALS.map(g=>`<div class="goal ${g[0]===oGoal?'on':''}" data-g="${g[0]}"><span class="e">${g[1]}</span><b>${g[2]}</b></div>`).join("")}
+$("oGoals").onclick=e=>{const g=e.target.closest(".goal");if(g){oGoal=g.dataset.g;renderGoals()}};
+function openOb(){
+  if(P){$("oName").value=P.name||"";$("oAge").value=P.age;$("oSex").value=P.sex;$("oH").value=P.h;$("oW").value=P.w;$("oAct").value=String(P.act);oGoal=P.goal;}
+  renderGoals();$("ob").classList.add("show");
+}
+$("oSave").onclick=()=>{
+  const age=+$("oAge").value,h=+$("oH").value,w=+$("oW").value;
+  if(!(age>=10&&age<=100)) return $("oErr").textContent="Yaşını gir (10-100)";
+  if(!(h>=120&&h<=230)) return $("oErr").textContent="Boyunu cm olarak gir (120-230)";
+  if(!(w>=25&&w<=300)) return $("oErr").textContent="Kilonu kg olarak gir (25-300)";
+  $("oErr").textContent="";
+  P={name:$("oName").value.trim(),age,sex:$("oSex").value,h,w,act:+$("oAct").value,goal:oGoal};
+  ls.set("kepce-profile",P);
+  $("ob").classList.remove("show");render();toast("Planın hazır! 🎉");
+};
+
+// ---------- render ----------
+function render(){
+  if(!P) return;
+  const C=calc(P);
+  const eaten=S.log.reduce((a,l)=>a+Math.round(l.k*l.q),0);
+  const burned=S.sport.reduce((a,s)=>a+s.kcal,0);
+  const spMin=S.sport.reduce((a,s)=>a+s.min,0);
+  const hi=P.name?`Selam ${esc(P.name)} 👋`:"Bugün";
+  if(C.adult&&C.target){
+    const pct=Math.min(100,eaten/C.target*100);
+    $("hero").innerHTML=`<div class="row"><div><div class="muted">${hi} · yediklerin</div><div class="big">${eaten}</div><div class="muted">/ ${C.target} kcal hedef (yaklaşık)</div></div><div style="font-size:48px">🍲</div></div>
+      <div class="bar"><i style="width:${pct}%"></i></div>
+      <div class="stats3"><div class="stat"><b>${Math.max(0,C.target-eaten)}</b><span>kalan</span></div><div class="stat"><b>${burned}</b><span>sporla yakılan</span></div><div class="stat"><b>${S.water}/${C.water}</b><span>bardak su</span></div></div>
+      <div class="meals">${mealPills()}</div>`;
+  } else {
+    $("hero").innerHTML=`<div class="row"><div><div class="muted">${hi} · yediklerin</div><div class="big">${eaten}</div><div class="muted">kcal (yaklaşık)</div></div><div style="font-size:48px">🍲</div></div>
+      <div class="stats3"><div class="stat"><b>${spMin}</b><span>dk spor</span></div><div class="stat"><b>${S.water}/${C.water}</b><span>bardak su</span></div><div class="stat"><b>${S.moves.filter(Boolean).length}/3</b><span>mini hedef</span></div></div>
+      <div class="meals">${mealPills()}</div>`;
+  }
+  // plan
+  let items=[];
+  if(C.adult){
+    items.push(["📏",`Vücut kitle indeksin <b>${C.bmi.toFixed(1)}</b> (${bmiCat(C.bmi)}).`]);
+    if(P.goal==="ver"&&!C.note) items.push(["🍽️",`Günde yaklaşık <b>${C.target} kcal</b> hedefle. Haftada 0,25–0,5 kg vermek sağlıklı bir hızdır, acele etme.`]);
+    else if(P.goal==="al") items.push(["🍽️",`Günde yaklaşık <b>${C.target} kcal</b> hedefle. Proteinli ev yemekleri ve ara öğünler ekle.`]);
+    else items.push(["🍽️",`Kilonu korumak için günde yaklaşık <b>${C.target} kcal</b> yeterli.`]);
+    items.push(["🏃",`Haftada en az <b>150 dakika</b> orta tempolu hareket et (günde ~20-30 dk).`]);
+  } else {
+    items.push(["🍽️","Kalori saymak yerine <b>3 ana öğünü</b> atlama, tabağının yarısı sebze ya da salata olsun."]);
+    items.push(["🏃","Her gün en az <b>60 dakika</b> hareket et: futbol, basketbol, bisiklet, yürüyüş, ne seversen."]);
+    items.push(["😴","Gece <b>8-10 saat</b> uyu, büyüme ve enerji için çok önemli."]);
+  }
+  items.push(["💧",`Günde <b>${C.water} bardak</b> su iç.`]);
+  items.push(["🥤","Şekerli içecekleri ve paketli atıştırmalıkları azalt, yerine meyve ve ayran."]);
+  $("plan").innerHTML=items.map(i=>`<li><span class="e">${i[0]}</span><span>${i[1]}</span></li>`).join("");
+  $("planWarn").innerHTML=C.note?`<div class="warn">⚠️ ${C.note}</div>`:
+    (!C.adult&&P.goal!=="saglik"?`<div class="warn">💡 Büyüme çağında kalori kısıtlaması önerilmez. Kilo hedefin varsa bunu ailenle ve doktorunla konuş; burada sağlıklı alışkanlıklara odaklanıyoruz.</div>`:"");
+  // su
+  $("glasses").style.gridTemplateColumns=`repeat(${Math.min(C.water,8)},1fr)`;
+  $("glasses").innerHTML=Array.from({length:C.water},(_,i)=>`<div class="glass ${i<S.water?'full':''}" data-i="${i}"></div>`).join("");
+  $("waterTxt").textContent=`${S.water}/${C.water} bardak`;
+  $("moves").innerHTML=MOVES.map((m,i)=>`<div class="move ${S.moves[i]?'done':''}" data-m="${i}"><div class="chk">${S.moves[i]?'✓':''}</div><span style="font-size:22px">${m[0]}</span><b>${m[1]}</b></div>`).join("");
+  $("log").innerHTML=S.log.length?S.log.map((l,i)=>`<div class="log-item"><div><div class="n">${l.e} ${esc(l.n)}${l.ai?' <span class="muted">📸</span>':''}</div><div class="s">${l.meal} · ${l.q} × ${esc(l.u)}</div></div><div><span class="kcal">${Math.round(l.k*l.q)}</span><button class="del" data-d="${i}">×</button></div></div>`).join("")
+    :`<div class="empty">Henüz kayıt yok.<br>➕ Ekle sekmesinden ilk yemeğini ekle!</div>`;
+  renderSport(C);renderProfile(C);renderBadges(C);
+}
+function mealPills(){return MEALS.map(m=>{const k=S.log.filter(l=>l.meal===m).reduce((a,l)=>a+Math.round(l.k*l.q),0);return `<div class="meal-pill"><b>${k}</b><span>${m}</span></div>`}).join("")}
+
+function renderSport(C){
+  const min=S.sport.reduce((a,s)=>a+s.min,0),kc=S.sport.reduce((a,s)=>a+s.kcal,0);
+  $("spMin").textContent=min;$("spKcal").textContent=kc;
+  const days=[];let weekTotal=0;
+  for(let i=6;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);
+    const rec=i===0?S:ls.get(dayKey(d));const m=rec&&rec.sport?rec.sport.reduce((a,s)=>a+s.min,0):0;weekTotal+=m;
+    days.push([d.toLocaleDateString("tr-TR",{weekday:"short"}),m]);}
+  if(C.adult){$("spGoalTxt").textContent=`Haftalık hedef: ${weekTotal}/${C.weekSport} dakika`;$("spGoalBar").style.width=Math.min(100,weekTotal/C.weekSport*100)+"%";}
+  else{$("spGoalTxt").textContent=`Günlük hedef: ${min}/60 dakika`;$("spGoalBar").style.width=Math.min(100,min/60*100)+"%";}
+  const mx=Math.max(60,...days.map(d=>d[1]));
+  $("week").innerHTML=days.map(d=>`<div class="col"><b style="font-size:11px">${d[1]||""}</b><div class="b ${d[1]?'':'z'}" style="height:${Math.max(4,d[1]/mx*80)}px"></div><span>${d[0]}</span></div>`).join("");
+  $("spLog").innerHTML=S.sport.length?S.sport.map((s,i)=>`<div class="log-item"><div><div class="n">${s.e} ${s.n}</div><div class="s">${s.min} dakika</div></div><div><span class="kcal g">-${s.kcal}</span><button class="del" data-sd="${i}">×</button></div></div>`).join(""):`<div class="empty">Bugün henüz aktivite yok. Hadi biraz hareket! 💪</div>`;
+}
+function renderProfile(C){
+  const g=GOALS.find(x=>x[0]===P.goal);
+  let rows=[["Yaş",P.age],["Boy",P.h+" cm"],["Kilo",P.w+" kg"],["Hedef",g[1]+" "+g[2]]];
+  if(C.adult) rows.push(["Vücut kitle indeksi",C.bmi.toFixed(1)+" ("+bmiCat(C.bmi)+")"],["Günlük enerji ihtiyacı","~"+C.tdee+" kcal"]);
+  $("profile").innerHTML=(P.name?`<div class="prow"><span>Ad</span><b>${esc(P.name)}</b></div>`:"")+rows.map(r=>`<div class="prow"><span>${r[0]}</span><b>${r[1]}</b></div>`).join("");
+}
+function renderBadges(C){
+  const B=[["🥄","İlk kayıt",S.log.length>=1],["💧","Su hedefi",S.water>=C.water],["🚶","Mini hedefler",S.moves.every(Boolean)],
+    ["🥗","3 farklı öğün",new Set(S.log.map(l=>l.meal)).size>=3],["🍎","Meyve günü",S.log.some(l=>l.c==="Meyve")],
+    ["📸","Foto analiz",S.log.some(l=>l.ai)],["🏃","İlk antrenman",S.sport.length>=1],["🔥","30 dk spor",S.sport.reduce((a,s)=>a+s.min,0)>=30],["🫘","Ev yemeği",S.log.some(l=>l.c==="Ev yemeği")]];
+  $("badges").innerHTML=B.map(b=>`<div class="bdg ${b[2]?'on':''}"><div class="e">${b[0]}</div><b>${b[1]}</b></div>`).join("");
+}
+
+// ---------- etkileşimler ----------
+$("glasses").onclick=e=>{const g=e.target.closest(".glass");if(!g)return;const i=+g.dataset.i,C=calc(P);
+  const before=S.water;S.water=(i===S.water-1)?i:i+1;save();render();
+  if(S.water>=C.water&&before<C.water)toast("💧 Süpersin! Günlük su hedefi tamam");};
+$("moves").onclick=e=>{const m=e.target.closest(".move");if(!m)return;const i=+m.dataset.m;S.moves[i]=!S.moves[i];save();render();
+  if(S.moves.every(Boolean))toast("🚶 Bütün mini hedefler tamam, helal!");};
+$("log").onclick=e=>{const d=e.target.closest(".del");if(!d)return;S.log.splice(+d.dataset.d,1);save();render();};
+$("spLog").onclick=e=>{const d=e.target.closest(".del");if(!d)return;S.sport.splice(+d.dataset.sd,1);save();render();};
+$("editProf").onclick=openOb;
+
+// arama
+let cat="Hepsi";
+$("cats").innerHTML=CATS.map(c=>`<div class="chip ${c===cat?'on':''}" data-c="${c}">${c}</div>`).join("");
+$("cats").onclick=e=>{const c=e.target.closest(".chip");if(!c)return;cat=c.dataset.c;document.querySelectorAll(".chip").forEach(x=>x.classList.toggle("on",x.dataset.c===cat));renderFoods();};
+const norm=s=>s.toLocaleLowerCase("tr-TR");
+function renderFoods(){const q=norm($("q").value.trim());
+  const list=FOODS.map((f,i)=>[f,i]).filter(([f])=>(cat==="Hepsi"||f[4]===cat)&&(!q||norm(f[0]).includes(q)));
+  $("foods").innerHTML=list.length?list.map(([f,i])=>`<div class="food" data-f="${i}"><div class="em">${f[1]}</div><div class="info"><b>${f[0]}</b><span class="muted">${f[2]}</span></div><span class="kcal">${f[3]}</span></div>`).join(""):`<div class="empty">Bulunamadı 😕<br>Tabağının fotoğrafını çekmeyi dene!</div>`;}
+$("q").oninput=renderFoods;
+
+// yemek sheet
+let cur=null,qty=1,meal=guessMeal();
+function guessMeal(){const h=new Date().getHours();return h<11?"Kahvaltı":h<15?"Öğle":h<21?"Akşam":"Ara"}
+const segHtml=()=>MEALS.map(m=>`<button class="${m===meal?'on':''}" data-m="${m}">${m}</button>`).join("");
+function openSheet(i){cur=i;qty=1;meal=guessMeal();const f=FOODS[i];$("sEm").textContent=f[1];$("sName").textContent=f[0];$("sUnit").textContent="Ölçü: "+f[2];updSheet();$("ov").classList.add("show");}
+function updSheet(){$("sQty").textContent=qty;$("sKcal").textContent=Math.round(FOODS[cur][3]*qty);$("seg").innerHTML=segHtml();}
+$("foods").onclick=e=>{const f=e.target.closest(".food");if(f)openSheet(+f.dataset.f)};
+$("minus").onclick=()=>{if(qty>0.5){qty-=0.5;updSheet()}};
+$("plus").onclick=()=>{if(qty<10){qty+=0.5;updSheet()}};
+$("seg").onclick=e=>{const b=e.target.closest("button");if(b){meal=b.dataset.m;updSheet()}};
+$("cancel").onclick=()=>$("ov").classList.remove("show");
+$("addBtn").onclick=()=>{const f=FOODS[cur];S.log.push({n:f[0],e:f[1],u:f[2],k:f[3],c:f[4],q:qty,meal});save();render();$("ov").classList.remove("show");toast(`${f[1]} ${meal} öğününe eklendi`);};
+document.querySelectorAll(".overlay").forEach(o=>o.addEventListener("click",e=>{if(e.target===o)o.classList.remove("show")}));
+
+// spor sheet
+let curS=null,sMin=30;
+$("sports").innerHTML=SPORTS.map((s,i)=>`<div class="sp" data-s="${i}"><span class="e">${s[1]}</span>${s[0]}</div>`).join("");
+$("sports").onclick=e=>{const s=e.target.closest(".sp");if(!s)return;curS=+s.dataset.s;sMin=30;const x=SPORTS[curS];$("ssEm").textContent=x[1];$("ssName").textContent=x[0];updS();$("ovS").classList.add("show");};
+function updS(){$("ssMin").textContent=sMin;$("ssKcal").textContent=sportKcal(SPORTS[curS][2],sMin);}
+$("sMinus").onclick=()=>{if(sMin>5){sMin-=5;updS()}};
+$("sPlus").onclick=()=>{if(sMin<240){sMin+=5;updS()}};
+$("sCancel").onclick=()=>$("ovS").classList.remove("show");
+$("sAdd").onclick=()=>{const x=SPORTS[curS];S.sport.push({n:x[0],e:x[1],min:sMin,kcal:sportKcal(x[2],sMin)});save();render();$("ovS").classList.remove("show");toast(`${x[1]} ${sMin} dk ${x[0]} kaydedildi!`);};
+
+// ---------- fotoğraf analizi ----------
+let sample=null;
+function initSample(tries){
+  if(window.claude&&typeof claude.use==="function"){
+    claude.use("sample").then(async s=>{
+      if(!s) return hidePhoto();
+      try{const lim=await s.limits(); if(lim&&lim.images===false) return hidePhoto();}catch(e){}
+      sample=s;
+    }).catch(hidePhoto);
+  } else if(tries<20) setTimeout(()=>initSample(tries+1),500);
+  else hidePhoto();
+}
+initSample(0);
+function hidePhoto(){ if(!sample){ $("photoBtn").querySelector(".muted").textContent="Bu görünümde yapay zekâ kullanılamıyor"; $("photoBtn").style.opacity=.5; $("photoBtn").dataset.off="1"; } }
+$("photoBtn").onclick=()=>{
+  if(!sample){toast("Yapay zekâ şu an kullanılamıyor 😕");return;}
+  $("photoIn").click();
+};
+function shrink(file){return new Promise((res,rej)=>{const img=new Image();img.onload=()=>{const m=1024,sc=Math.min(1,m/Math.max(img.width,img.height));
+  const c=document.createElement("canvas");c.width=Math.round(img.width*sc);c.height=Math.round(img.height*sc);c.getContext("2d").drawImage(img,0,0,c.width,c.height);
+  c.toBlob(b=>b?res({blob:b,url:c.toDataURL("image/jpeg",.8)}):rej(new Error("resim")),"image/jpeg",.82);};img.onerror=rej;img.src=URL.createObjectURL(file);});}
+let pItems=[],pUrl="",pMeal=guessMeal(),pBusy=false;
+$("photoIn").onchange=async e=>{
+  const file=e.target.files[0];e.target.value="";if(!file||pBusy)return;
+  pBusy=true;pMeal=guessMeal();
+  let img;try{img=await shrink(file);}catch(err){pBusy=false;toast("Fotoğraf açılamadı");return;}
+  pUrl=img.url;
+  $("pSheet").innerHTML=`<img class="pimg" src="${pUrl}"><h2 style="text-align:center">Tabağın inceleniyor...</h2><div class="spin"></div><p class="muted" style="text-align:center">Yemekler tanınıyor, porsiyonlar tahmin ediliyor 🍽️</p>`;
+  $("ovP").classList.add("show");
+  const prompt=`Sen Türk mutfağını çok iyi bilen bir diyetisyensin. Bu fotoğraftaki tabakta/masada görünen her yiyecek ve içeceği tanı, porsiyonunu ev ölçüsüyle tahmin et ve yaklaşık kalorisini hesapla.
+Sadece şu biçimde JSON döndür, başka hiçbir şey yazma:
+{"yemekler":[{"ad":"Mercimek çorbası","emoji":"🥣","birim":"1 kase","kcal":150}],"not":"kısa Türkçe not"}
+Kurallar: "ad" Türkçe olsun. "birim" görünen miktarı anlatsın (örn. "1 kepçe", "2 dilim", "1 porsiyon"). "kcal" o birimin TOPLAM yaklaşık kalorisi, tam sayı. "not" en fazla 1 cümle, porsiyon tahmini hakkında. Fotoğrafta yiyecek yoksa "yemekler" boş liste olsun ve "not" bunu söylesin.`;
+  try{
+    const r=await sample.json(prompt,{images:[img.blob],modelTier:"default"});
+    const list=(r&&Array.isArray(r.yemekler))?r.yemekler:[];
+    pItems=list.filter(x=>x&&x.ad).slice(0,12).map(x=>({n:String(x.ad).slice(0,60),e:String(x.emoji||"🍽️").slice(0,4),u:String(x.birim||"1 porsiyon").slice(0,40),k:Math.max(0,Math.min(3000,Math.round(+x.kcal||0))),q:1,on:true}));
+    renderPhoto(r&&r.not?String(r.not).slice(0,200):"");
+  }catch(err){
+    const msg=err&&err.code==="rate_limited"?"Çok sık denedin, biraz bekleyip tekrar dene.":err&&err.code==="not_granted"?"Yapay zekâ izni verilmedi.":"Analiz yapılamadı, tekrar dene.";
+    $("pSheet").innerHTML=`<img class="pimg" src="${pUrl}"><h2 style="text-align:center">😕 ${msg}</h2><button class="btn ghost" onclick="document.getElementById('ovP').classList.remove('show')">Kapat</button>`;
+  }finally{pBusy=false;}
+};
+function renderPhoto(note){
+  if(note!==undefined) renderPhoto.note=note;
+  const tot=pItems.filter(x=>x.on).reduce((a,x)=>a+Math.round(x.k*x.q),0);
+  $("pSheet").innerHTML=`<img class="pimg" src="${pUrl}">
+   <h2>${pItems.length?"Tabağında bunları gördüm 👀":"Yemek bulamadım 🤔"}</h2>
+   ${renderPhoto.note?`<p class="muted" style="margin-bottom:10px">${esc(renderPhoto.note)}</p>`:""}
+   ${pItems.map((x,i)=>`<div class="pres ${x.on?'':'off'}"><span class="em">${esc(x.e)}</span><div class="info"><b>${esc(x.n)}</b><span class="muted">${esc(x.u)} · <span class="kcal">${Math.round(x.k*x.q)}</span> kcal</span></div>
+     <div class="mini"><button data-pm="${i}">−</button><b style="min-width:26px;text-align:center">${x.q}</b><button data-pp="${i}">+</button><button data-pt="${i}" style="border-color:${x.on?'var(--green)':'var(--line)'}">${x.on?'✓':''}</button></div></div>`).join("")}
+   ${pItems.length?`<div style="text-align:center;font-size:18px;margin:10px 0">Toplam ≈ <span class="kcal">${tot}</span> kcal</div><div class="seg" id="pSeg">${MEALS.map(m=>`<button class="${m===pMeal?'on':''}" data-m="${m}">${m}</button>`).join("")}</div>
+   <button class="btn" id="pAdd" ${tot?'':'disabled'}>Öğüne ekle</button>`:""}
+   <button class="btn ghost" id="pClose">${pItems.length?"Vazgeç":"Kapat"}</button>
+   <p class="note">Fotoğraftan yapılan kalori tahmini yaklaşıktır. Miktarları kontrol edip düzeltebilirsin.</p>`;
+}
+$("pSheet").onclick=e=>{
+  const b=e.target.closest("button");if(!b)return;
+  if(b.id==="pClose"){$("ovP").classList.remove("show");return;}
+  if(b.id==="pAdd"){const sel=pItems.filter(x=>x.on);sel.forEach(x=>S.log.push({n:x.n,e:x.e,u:x.u,k:x.k,c:"Foto",q:x.q,meal:pMeal,ai:true}));
+    save();render();$("ovP").classList.remove("show");toast(`📸 ${sel.length} yemek ${pMeal} öğününe eklendi`);return;}
+  if(b.dataset.m){pMeal=b.dataset.m;renderPhoto();return;}
+  const i=+(b.dataset.pm??b.dataset.pp??b.dataset.pt);if(isNaN(i))return;
+  if(b.dataset.pm!==undefined&&pItems[i].q>0.5)pItems[i].q-=0.5;
+  if(b.dataset.pp!==undefined&&pItems[i].q<10)pItems[i].q+=0.5;
+  if(b.dataset.pt!==undefined)pItems[i].on=!pItems[i].on;
+  renderPhoto();
+};
+
+// nav
+document.querySelector("nav").onclick=e=>{const b=e.target.closest("button");if(!b)return;
+  document.querySelectorAll("nav button").forEach(x=>x.classList.toggle("on",x===b));
+  document.querySelectorAll(".view").forEach(v=>v.classList.toggle("on",v.id==="v-"+b.dataset.v));window.scrollTo(0,0);};
+
+renderFoods();
+if(P) render(); else openOb();
+</script>
+</body>
+</html>
