@@ -30,7 +30,14 @@ const DOSYALAR = {
 };
 function yerelAdresler() {
   return Object.values(os.networkInterfaces()).flat()
-    .filter(a => a && a.family === "IPv4" && !a.internal).map(a => "http://" + a.address + ":" + PORT);
+    .filter(a => a && a.family === "IPv4" && !a.internal)
+    .map(a => a.address)
+    // Ev Wi-Fi adresleri (192.168.x, 10.x, 172.16-31.x) önce gelsin, QR onları göstersin
+    .sort((x, y) => ev(y) - ev(x))
+    .map(ip => "http://" + ip + ":" + PORT);
+}
+function ev(ip) {
+  return /^192\.168\./.test(ip) ? 3 : /^10\./.test(ip) ? 2 : /^172\.(1[6-9]|2\d|3[01])\./.test(ip) ? 1 : 0;
 }
 
 // Talimat dosyasını her seferinde yeniden okuyoruz: düzenlersen hemen etkili olur.
