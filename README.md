@@ -12,4 +12,6 @@ Türk mutfağına özel, ev ölçüleriyle (kepçe, dilim, adet) çalışan sağ
 - Rozetler
 - 📸 Tabak fotoğrafından kalori tahmini (yalnızca claude.ai sürümünde çalışır)
 
+- 🖥️ Kendi bilgisayarında çalışan yerel yapay zekâ sunucusu (Ollama) — kurulum için [sunucu/KURULUM.md](sunucu/KURULUM.md)
+
 Veriler sadece tarayıcında (localStorage) tutulur. Hesaplamalar tahminidir, tıbbi tavsiye değildir.

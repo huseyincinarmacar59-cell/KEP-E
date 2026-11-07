@@ -497,23 +497,39 @@ $("sCancel").onclick=()=>$("ovS").classList.remove("show");
 $("sAdd").onclick=()=>{const x=SPORTS[curS];S.sport.push({n:x[0],e:x[1],min:sMin,kcal:sportKcal(x[2],sMin)});save();render();$("ovS").classList.remove("show");toast(`${x[1]} ${sMin} dk ${x[0]} kaydedildi!`);};
 
 // ---------- fotoğraf analizi ----------
-let sample=null;
+// İki yol var: claude.ai içinde Claude, kendi bilgisayarında ise yerel sunucu (Ollama).
+let sample=null, localAI=null;
 function initSample(tries){
   if(window.claude&&typeof claude.use==="function"){
     claude.use("sample").then(async s=>{
-      if(!s) return hidePhoto();
-      try{const lim=await s.limits(); if(lim&&lim.images===false) return hidePhoto();}catch(e){}
+      if(!s) return checkLocal();
+      try{const lim=await s.limits(); if(lim&&lim.images===false) return checkLocal();}catch(e){}
       sample=s;
-    }).catch(hidePhoto);
-  } else if(tries<20) setTimeout(()=>initSample(tries+1),500);
-  else hidePhoto();
+    }).catch(checkLocal);
+  } else if(tries<6) setTimeout(()=>initSample(tries+1),500);
+  else checkLocal();
+}
+async function checkLocal(){
+  try{
+    const r=await fetch("saglik",{cache:"no-store"});
+    if(r.ok){const j=await r.json(); if(j.ok){localAI=j.model;
+      $("photoBtn").querySelector(".muted").textContent="Yerel yapay zekâ hazır ("+localAI+")";return;}}
+  }catch(e){}
+  hidePhoto();
 }
 initSample(0);
-function hidePhoto(){ if(!sample){ $("photoBtn").querySelector(".muted").textContent="Bu görünümde yapay zekâ kullanılamıyor"; $("photoBtn").style.opacity=.5; $("photoBtn").dataset.off="1"; } }
+function hidePhoto(){ if(!sample&&!localAI){ $("photoBtn").querySelector(".muted").textContent="Bu görünümde yapay zekâ kullanılamıyor"; $("photoBtn").style.opacity=.5; $("photoBtn").dataset.off="1"; } }
 $("photoBtn").onclick=()=>{
-  if(!sample){toast("Yapay zekâ şu an kullanılamıyor 😕");return;}
+  if(!sample&&!localAI){toast("Yapay zekâ şu an kullanılamıyor 😕");return;}
   $("photoIn").click();
 };
+async function analyze(blob,prompt){
+  if(sample) return sample.json(prompt,{images:[blob],modelTier:"default"});
+  const r=await fetch("analiz",{method:"POST",headers:{"Content-Type":"image/jpeg"},body:blob});
+  const j=await r.json().catch(()=>({}));
+  if(!r.ok) throw {code:"local",message:j.hata||"Sunucu hatası"};
+  return j;
+}
 function shrink(file){return new Promise((res,rej)=>{const img=new Image();img.onload=()=>{const m=1024,sc=Math.min(1,m/Math.max(img.width,img.height));
   const c=document.createElement("canvas");c.width=Math.round(img.width*sc);c.height=Math.round(img.height*sc);c.getContext("2d").drawImage(img,0,0,c.width,c.height);
   c.toBlob(b=>b?res({blob:b,url:c.toDataURL("image/jpeg",.8)}):rej(new Error("resim")),"image/jpeg",.82);};img.onerror=rej;img.src=URL.createObjectURL(file);});}
@@ -523,19 +539,19 @@ $("photoIn").onchange=async e=>{
   pBusy=true;pMeal=guessMeal();
   let img;try{img=await shrink(file);}catch(err){pBusy=false;toast("Fotoğraf açılamadı");return;}
   pUrl=img.url;
-  $("pSheet").innerHTML=`<img class="pimg" src="${pUrl}"><h2 style="text-align:center">Tabağın inceleniyor...</h2><div class="spin"></div><p class="muted" style="text-align:center">Yemekler tanınıyor, porsiyonlar tahmin ediliyor 🍽️</p>`;
+  $("pSheet").innerHTML=`<img class="pimg" src="${pUrl}"><h2 style="text-align:center">Tabağın inceleniyor...</h2><div class="spin"></div><p class="muted" style="text-align:center">Yemekler tanınıyor, porsiyonlar tahmin ediliyor 🍽️${localAI?"<br>Yerel yapay zekâ bilgisayarın gücüne göre 10-60 saniye sürebilir.":""}</p>`;
   $("ovP").classList.add("show");
   const prompt=`Sen Türk mutfağını çok iyi bilen bir diyetisyensin. Bu fotoğraftaki tabakta/masada görünen her yiyecek ve içeceği tanı, porsiyonunu ev ölçüsüyle tahmin et ve yaklaşık kalorisini hesapla.
 Sadece şu biçimde JSON döndür, başka hiçbir şey yazma:
 {"yemekler":[{"ad":"Mercimek çorbası","emoji":"🥣","birim":"1 kase","kcal":150}],"not":"kısa Türkçe not"}
 Kurallar: "ad" Türkçe olsun. "birim" görünen miktarı anlatsın (örn. "1 kepçe", "2 dilim", "1 porsiyon"). "kcal" o birimin TOPLAM yaklaşık kalorisi, tam sayı. "not" en fazla 1 cümle, porsiyon tahmini hakkında. Fotoğrafta yiyecek yoksa "yemekler" boş liste olsun ve "not" bunu söylesin.`;
   try{
-    const r=await sample.json(prompt,{images:[img.blob],modelTier:"default"});
+    const r=await analyze(img.blob,prompt);
     const list=(r&&Array.isArray(r.yemekler))?r.yemekler:[];
     pItems=list.filter(x=>x&&x.ad).slice(0,12).map(x=>({n:String(x.ad).slice(0,60),e:String(x.emoji||"🍽️").slice(0,4),u:String(x.birim||"1 porsiyon").slice(0,40),k:Math.max(0,Math.min(3000,Math.round(+x.kcal||0))),q:1,on:true}));
     renderPhoto(r&&r.not?String(r.not).slice(0,200):"");
   }catch(err){
-    const msg=err&&err.code==="rate_limited"?"Çok sık denedin, biraz bekleyip tekrar dene.":err&&err.code==="not_granted"?"Yapay zekâ izni verilmedi.":"Analiz yapılamadı, tekrar dene.";
+    const msg=err&&err.code==="rate_limited"?"Çok sık denedin, biraz bekleyip tekrar dene.":err&&err.code==="not_granted"?"Yapay zekâ izni verilmedi.":err&&err.code==="local"?"Yerel yapay zekâ cevap veremedi. Ollama açık mı?":"Analiz yapılamadı, tekrar dene.";
     $("pSheet").innerHTML=`<img class="pimg" src="${pUrl}"><h2 style="text-align:center">😕 ${msg}</h2><button class="btn ghost" onclick="document.getElementById('ovP').classList.remove('show')">Kapat</button>`;
   }finally{pBusy=false;}
 };
