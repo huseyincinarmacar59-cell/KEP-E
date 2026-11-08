@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-title" content="Kepçe">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<title>Kepçe – Türk Mutfağı Takip (Demo)</title>
+<title>Kepçe – Türk Mutfağı Takip</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -168,6 +168,53 @@
   .note{font-size:12px;color:var(--muted);text-align:center;margin-top:6px;line-height:1.5}
   .prow{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
   .prow:last-child{border-bottom:none}
+
+  /* ===== LIQUID GLASS katmanı ===== */
+  body{background:#FBF1E4;overflow-x:hidden}
+  .blobs{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  .blobs i{position:absolute;border-radius:50%;filter:blur(48px);opacity:.55;animation:drift 12s ease-in-out infinite}
+  .blobs i:nth-child(1){width:300px;height:300px;left:-90px;top:-40px;background:#FF8D28}
+  .blobs i:nth-child(2){width:280px;height:280px;right:-100px;top:300px;background:#FFCC00;opacity:.45;animation-duration:15s;animation-direction:reverse}
+  .blobs i:nth-child(3){width:300px;height:300px;left:-80px;top:620px;background:#FF5E7A;opacity:.3;animation-duration:17s}
+  .blobs i:nth-child(4){width:260px;height:260px;right:-80px;bottom:-40px;background:#F2A65A;opacity:.5;animation-duration:13s}
+  @keyframes drift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(26px,-22px) scale(1.1)}}
+  .app{position:relative;z-index:1}
+  .lg,.card,.daynav,.food,.chip,.search,.photo-btn,.move,.sheet,.qclear{
+    background:rgba(255,255,255,.42)!important;-webkit-backdrop-filter:blur(22px) saturate(180%);backdrop-filter:blur(22px) saturate(180%);
+    border:1px solid rgba(255,255,255,.75)!important;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.95),inset 0 -1px 0 rgba(255,255,255,.35),0 10px 28px rgba(120,60,20,.10)!important}
+  .hero{background:linear-gradient(135deg,rgba(217,87,43,.82),rgba(242,166,90,.78))!important;-webkit-backdrop-filter:blur(22px) saturate(180%);backdrop-filter:blur(22px) saturate(180%);
+    border:1px solid rgba(255,255,255,.55)!important;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.6),inset 0 -2px 10px rgba(120,40,0,.15),0 14px 34px rgba(217,87,43,.28)!important}
+  .stat,.meal-pill{background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.35);box-shadow:inset 0 1px 0 rgba(255,255,255,.45)}
+  .move.done{background:rgba(63,155,95,.18)!important}
+  .chip.on{background:rgba(43,33,24,.85)!important;color:#fff}
+  .photo-btn{border-style:solid!important}
+  .glass-in{background:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.6);box-shadow:inset 0 1px 0 rgba(255,255,255,.9)}
+  .bar{background:rgba(255,255,255,.28)}.bar.dark{background:rgba(120,120,128,.18)}
+  .daynav button{background:rgba(255,255,255,.5);box-shadow:inset 0 1px 0 #fff}
+  .overlay{background:rgba(40,20,5,.28);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+  nav{background:transparent!important;border:none!important;left:12px!important;right:12px!important;bottom:calc(10px + env(safe-area-inset-bottom))!important}
+  nav .in{background:rgba(255,255,255,.4);-webkit-backdrop-filter:blur(24px) saturate(200%);backdrop-filter:blur(24px) saturate(200%);
+    border:1px solid rgba(255,255,255,.85);border-radius:34px;padding:5px;box-shadow:inset 0 1.5px 0 #fff,inset 0 -2px 6px rgba(255,255,255,.35),0 12px 32px rgba(120,60,20,.18)}
+  nav button{padding:8px 0!important;border-radius:28px}
+  nav button.on{background:rgba(255,255,255,.65);box-shadow:inset 0 1px 0 #fff,0 2px 10px rgba(0,0,0,.08)}
+  .app{padding-bottom:calc(110px + env(safe-area-inset-bottom))!important}
+  /* İncebel */
+  .incebel{position:relative;display:flex;flex-direction:column;align-items:center;margin:0 0 14px}
+  .cay{background:none;border:none;padding:0;cursor:pointer;animation:bob 3.2s ease-in-out infinite;-webkit-tap-highlight-color:transparent}
+  .cay svg{display:block;overflow:visible}
+  .duo{display:flex;justify-content:center;align-items:flex-end;gap:6px}
+  .cay.kep{animation-delay:-1.6s}
+  .cay.zipla{animation:zipla .6s cubic-bezier(.3,1.6,.5,1)}
+  .cay .steam path{animation:steam 2.6s ease-in-out infinite}.cay .steam path+path{animation-delay:1.2s}
+  .cay .eyes{transform-origin:112px 118px;animation:blink 4.5s infinite}
+  @keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-7px) rotate(3deg)}}
+  @keyframes zipla{0%{transform:translateY(0) scale(1)}30%{transform:translateY(-26px) scale(1.06,.94) rotate(-6deg)}60%{transform:translateY(0) scale(1.08,.9)}100%{transform:none}}
+  @keyframes steam{0%{opacity:0;transform:translateY(8px)}40%{opacity:.9}100%{opacity:0;transform:translateY(-12px)}}
+  .incebel .bubble{position:relative;align-self:stretch;margin-top:-4px;padding:12px 14px;border-radius:22px}
+  .incebel .bubble b{display:block;font-size:12px;color:var(--accent);letter-spacing:.4px}
+  .incebel .bubble span{font-size:15px;font-weight:700;line-height:1.35}
+  @keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+  @media (prefers-reduced-transparency: reduce){.lg,.card,.daynav,.food,.chip,.search,.photo-btn,.move,.sheet,nav .in{background:#fff!important;-webkit-backdrop-filter:none;backdrop-filter:none}}
 </style>
 </head>
 <body>
@@ -195,6 +242,7 @@
   <button class="btn" id="oSave">Planımı oluştur 🚀</button>
 </div></div>
 
+<div class="blobs" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 <div class="app">
   <header>
     <div class="logo"><div class="ic">🥄</div>Kepçe</div>
@@ -203,6 +251,51 @@
 
   <!-- BUGÜN -->
   <section class="view on" id="v-home">
+    <div class="incebel">
+      <button class="cay" id="kepceMaskot" aria-label="Kepçe maskotu. Dokun, zıplasın.">
+      <svg viewBox="0 0 230 240" width="200" height="209" aria-hidden="true">
+  <defs>
+    <linearGradient id="kSteel3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8E9399"/><stop offset=".4" stop-color="#F2F4F6"/><stop offset=".6" stop-color="#FFFFFF"/><stop offset="1" stop-color="#8E9399"/></linearGradient>
+    <radialGradient id="kBowl3" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".45" stop-color="#D5D9DE"/><stop offset="1" stop-color="#7D838A"/></radialGradient>
+    <radialGradient id="kSoup3" cx=".45" cy=".35" r=".7"><stop offset="0" stop-color="#FFB25C"/><stop offset=".7" stop-color="#F08A2C"/><stop offset="1" stop-color="#D96A16"/></radialGradient>
+  </defs>
+  <ellipse cx="105" cy="232" rx="70" ry="6" fill="#7A3A10" opacity=".14"/>
+  <g>
+    <path d="M150 128 L196 30" stroke="#6E747B" stroke-width="15" stroke-linecap="round"/>
+    <path d="M150 128 L196 30" stroke="url(#kSteel3)" stroke-width="11" stroke-linecap="round"/>
+    <path d="M190 18 C200 -2 228 10 220 30 L206 58 C198 70 180 62 184 48 Z" fill="url(#kSteel3)" stroke="#6E747B" stroke-width="2.5" stroke-linejoin="round"/>
+    <ellipse cx="206" cy="26" rx="6.5" ry="8" transform="rotate(25 206 26)" fill="#FBF1E4" stroke="#6E747B" stroke-width="2"/>
+    <path d="M193 26 C196 16 204 12 210 13" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".9"/>
+    <path d="M158 112 L190 44" stroke="#fff" stroke-width="2.6" stroke-linecap="round" opacity=".9"/>
+    <circle cx="160" cy="110" r="3" fill="#B8BDC2" stroke="#6E747B" stroke-width="1"/>
+  </g>
+  <path d="M25 134 C25 186 61 224 105 224 C149 224 185 186 185 134 Z" fill="url(#kBowl3)" stroke="#7D838A" stroke-width="2.5"/>
+  <ellipse cx="105" cy="134" rx="80" ry="20" fill="#9AA0A6"/>
+  <ellipse cx="105" cy="134" rx="80" ry="20" fill="none" stroke="url(#kSteel3)" stroke-width="5"/>
+  <ellipse cx="105" cy="136" rx="72" ry="15" fill="url(#kSoup3)"/>
+  <circle cx="81" cy="134" r="3" fill="#FFD9A8"/><circle cx="119" cy="138" r="2.4" fill="#FFD9A8"/><circle cx="135" cy="132" r="2" fill="#FFD9A8"/>
+  <path d="M55 130 Q79 122 105 126" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".55"/>
+  <path d="M41 150 C43 180 61 202 83 212" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".8"/>
+  <g class="steam">
+    <path d="M77 102 C71 90 85 84 79 72" fill="none" stroke="#C9A98C" stroke-width="6" stroke-linecap="round" opacity=".7"/>
+    <path d="M107 100 C101 88 115 82 109 70" fill="none" stroke="#C9A98C" stroke-width="6" stroke-linecap="round" opacity=".7"/>
+  </g>
+  <path d="M69 158 Q79 150 91 155" fill="none" stroke="#2B1208" stroke-width="5" stroke-linecap="round"/>
+  <path d="M119 160 Q131 159 141 163" fill="none" stroke="#2B1208" stroke-width="5" stroke-linecap="round"/>
+  <g class="eyes" style="transform-origin:107px 177px">
+    <ellipse cx="83" cy="176" rx="11" ry="12.5" fill="#fff"/><ellipse cx="129" cy="177" rx="11" ry="10" fill="#fff"/>
+    <circle cx="86" cy="178" r="6.5" fill="#1C1C1E"/><circle cx="132" cy="178.5" r="6" fill="#1C1C1E"/>
+    <circle cx="88.5" cy="174.5" r="2.4" fill="#fff"/><circle cx="134.5" cy="175.5" r="2.2" fill="#fff"/>
+    <path d="M117 171 L142 169" stroke="#4A4F55" stroke-width="3" stroke-linecap="round" opacity=".6"/>
+  </g>
+  <ellipse cx="65" cy="196" rx="8" ry="4.5" fill="#FF7A95" opacity=".5"/><ellipse cx="147" cy="196" rx="8" ry="4.5" fill="#FF7A95" opacity=".5"/>
+  <path d="M91 198 Q109 214 125 192 Q109 204 91 198 Z" fill="#2B1208" stroke="#2B1208" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M98 201 L117 198 L115 203 L100 205 Z" fill="#fff"/>
+</svg>
+
+      </button>
+      <div class="bubble lg"><b id="incebelAd">KEPÇE</b><span id="incebelMsg">Selam! Ben Kepçe. Bugün ne yediğini yazarsan ben de susarım. Belki.</span></div>
+    </div>
     <div class="card" id="phoneCard" style="display:none;cursor:pointer;background:#fff6f0;border:2px solid var(--accent2)">
       <div style="display:flex;align-items:center;gap:12px"><span style="font-size:32px">📱</span>
       <div style="flex:1"><b>Telefonuna kur</b><div class="muted">QR kodu telefonunla okut, ana ekrana ekle</div></div><span style="font-size:20px">›</span></div>
@@ -283,6 +376,11 @@
       <h2>👤 Profilim</h2>
       <div id="profile"></div>
       <button class="btn ghost" id="editProf">Bilgilerimi düzenle</button>
+    </div>
+    <div class="card">
+      <h2>🥄 Kepçe'nin ağzı</h2>
+      <p class="muted" style="margin-bottom:10px">Kepçe sana nasıl laf atsın? Günde en fazla 5 mesaj atar.</p>
+      <div class="seg s2" id="tonSeg"><button data-t="tatli">😇 Tatlı</button><button data-t="zorba">😏 Zorba</button></div>
     </div>
     <div class="card">
       <h2>🏆 Rozetler</h2>
@@ -395,6 +493,7 @@ const isToday=()=>key===dayKey(new Date());
 const dayName=d=>{const t=startOf(new Date()),diff=Math.round((t-startOf(d))/864e5);
   return diff===0?"Bugün":diff===1?"Dün":d.toLocaleDateString("tr-TR",{day:"numeric",month:"long",weekday:"long"});};
 let P=ls.get("kepce-profile");
+
 let memProfile=null; // localStorage çalışmazsa
 const save=()=>ls.set(key,S);
 
@@ -440,7 +539,7 @@ $("oSave").onclick=()=>{
   if(!(h>=120&&h<=230)) return $("oErr").textContent="Boyunu cm olarak gir (120-230)";
   if(!(w>=25&&w<=300)) return $("oErr").textContent="Kilonu kg olarak gir (25-300)";
   $("oErr").textContent="";
-  P={name:$("oName").value.trim(),age,sex:$("oSex").value,h,w,act:+$("oAct").value,goal:oGoal};
+  P={name:$("oName").value.trim(),age,sex:$("oSex").value,h,w,act:+$("oAct").value,goal:oGoal,ton:(P&&P.ton)||"zorba"};
   ls.set("kepce-profile",P);
   $("ob").classList.remove("show");render();toast("Planın hazır! 🎉");
 };
@@ -509,7 +608,7 @@ function renderHist(){
   const dolu=days.filter(x=>x[2]>0);
   $("histAvg").textContent=dolu.length?`Kayıtlı ${dolu.length} günün ortalaması: ${Math.round(dolu.reduce((a,x)=>a+x[2],0)/dolu.length)} kcal`:"";
 }
-function goDay(d){viewDate=startOf(d);key=dayKey(viewDate);S=readDay(key);render();window.scrollTo(0,0);}
+function goDay(d){viewDate=startOf(d);key=dayKey(viewDate);S=readDay(key);render();window.scrollTo(0,0);if(typeof kepceKonus==="function")kepceKonus(false);}
 function mealPills(){return MEALS.map(m=>{const k=S.log.filter(l=>l.meal===m).reduce((a,l)=>a+Math.round(l.k*l.q),0);return `<div class="meal-pill"><b>${k}</b><span>${m}</span></div>`}).join("")}
 
 function renderSport(C){
@@ -656,6 +755,7 @@ $("addBtn").onclick=()=>{
   entry.t=Date.now();S.log.push(entry);
   RECENT=[f.a].concat(RECENT.filter(n=>n!==f.a)).slice(0,15);ls.set("kepce-recent",RECENT);
   save();render();renderCats();$("ov").classList.remove("show");toast(`${f.em} ${meal} öğününe eklendi`);
+  setTimeout(()=>kepceKonus(false),1900);
   if(!$("q").value) renderFoods();
 };
 // kendi yemeğin
@@ -782,6 +882,65 @@ async function initPhone(){
   };
 }
 initPhone();
+
+
+// ---------- Kepçe maskotu: mesaj sistemi ----------
+// Kurallar: günde en fazla 5 yeni mesaj, kimsenin ağzından konuşmaz,
+// kilo / beden / yemek miktarı üzerinden asla dalga geçmez.
+const MSG={
+  sabah:{zorba:["Günaydın. Kahvaltıyı yazmayı unutma, ben unutmam.","Sabah sabah boş tabak mı? Bir şey yediysen yaz bakalım."],
+         tatli:["Günaydın! Güzel bir kahvaltı yaparsan buraya yazmayı unutma 🌞","Yeni gün, yeni sayfa. Kahvaltında ne var?"]},
+  kahvalti:{zorba:["Saat 11'i geçti, kahvaltı hâlâ boş. Yemedin mi, yazmayı mı unuttun? İkisi de ayıp.","Kahvaltı sekmesi örümcek ağı bağladı. Bir şey yazsana."],
+         tatli:["Kahvaltını yazmayı unutmuş olabilir misin? Bir bakıver 🙂","Kahvaltı yaptıysan eklemeyi unutma, ben buradayım."]},
+  ogle:{zorba:["Saat 14 oldu, öğle yemeğini hâlâ yazmadın. Yemedin mi, unuttun mu? İkisi de ayıp.","Öğle yemeği kayıp. Polise mi haber verelim, sen mi yazacaksın?"],
+         tatli:["Öğle yemeğini yazmayı unuttun galiba, ekleyiverir misin? 🍲","Öğlen ne yedin? Yazarsan günün tamamlanır."]},
+  aksam:{zorba:["Akşam yemeği hâlâ yok. Ben kepçeyim, kepçe! Bir şey koy şuraya.","Saat 9 oldu, akşam yemeği listesi bomboş. Bu ne rahatlık?"],
+         tatli:["Akşam yemeğini eklemeyi unutma, günü güzel kapatalım 🌙","Akşam ne yedin? Yazınca içim rahat edecek."]},
+  su:{zorba:["Su bardakları bomboş. Kaktüs müsün sen? İç biraz su.","Bugün su içmeyi unuttun. Ben çorbayım, sen değilsin, iç şu suyu."],
+      tatli:["Biraz su içmeye ne dersin? Vücudun teşekkür eder 💧","Su hedefinin yarısına bile gelmedik, bir bardak içelim mi?"]},
+  hareket:{zorba:["Bugün hiç kıpırdamadın. Koltuk seni sevdi ama ben sevmedim.","Spor sekmesi seni özledi. 10 dakika yürüsen ölmezsin."],
+      tatli:["Kısa bir yürüyüş iyi gelebilir, ne dersin? 🚶","Bugün biraz hareket edelim mi? 10 dakika bile yeter."]},
+  iyi:{zorba:["Hmm, bugün düzgünsün. Şüpheleniyorum ama tebrikler.","Kayıtlar tamam gibi. Seni sevmeye başlayacağım, dikkat et.","Fena değil. Böyle devam edersen laf atacak bir şey bulamayacağım."],
+       tatli:["Harika gidiyorsun, böyle devam! 👏","Bugün çok düzenlisin, gurur duydum 🥹","Her şey yolunda görünüyor, aferin sana!"]},
+  sus:{zorba:["Bugünlük konuşma hakkım bitti. Yarın görüşürüz."],tatli:["Bugünlük bu kadar, yarın yine buradayım 💛"]}
+};
+const MSG_LIMIT=5;
+function msgDay(){return ls.get("kepce-msg-"+dayKey(new Date()).slice(6))||{n:0,last:"",key:""};}
+function msgSave(m){ls.set("kepce-msg-"+dayKey(new Date()).slice(6),m);}
+function durum(){
+  if(!P||!isToday()) return null;
+  const h=new Date().getHours(), C=calc(P), has=m=>S.log.some(l=>l.meal===m);
+  if(h>=21&&!has("Akşam")) return "aksam";
+  if(h>=14&&!has("Öğle")) return "ogle";
+  if(h>=11&&!has("Kahvaltı")&&!S.log.length) return "kahvalti";
+  if(h>=15&&S.water<C.water/2) return "su";
+  if(h>=18&&!S.sport.length&&!S.moves.some(Boolean)) return "hareket";
+  if(!S.log.length&&h<11) return "sabah";
+  return "iyi";
+}
+function kepceKonus(zorla){
+  const el=$("incebelMsg"); if(!el) return;
+  const m=msgDay(), d=durum();
+  if(!d){ if(m.last) el.textContent=m.last; return; }
+  const ton=(P&&P.ton)||"zorba";
+  if(!zorla && d===m.key && m.last){ el.textContent=m.last; return; }
+  if(m.n>=MSG_LIMIT){ el.textContent=m.last||MSG.sus[ton][0]; return; }
+  const list=MSG[d][ton]; let t=list[Math.floor(Math.random()*list.length)];
+  if(list.length>1&&t===m.last) t=list[(list.indexOf(t)+1)%list.length];
+  m.n++; m.last=t; m.key=d; msgSave(m); el.textContent=t;
+}
+(function(){
+  const c=document.getElementById("kepceMaskot"); if(!c) return;
+  c.addEventListener("click",()=>{c.classList.remove("zipla");void c.offsetWidth;c.classList.add("zipla");kepceKonus(true);});
+  c.addEventListener("animationend",e=>{if(e.animationName==="zipla")c.classList.remove("zipla");});
+  setTimeout(()=>kepceKonus(false),600);
+  document.addEventListener("visibilitychange",()=>{if(!document.hidden)setTimeout(()=>kepceKonus(false),400);});
+  setInterval(()=>kepceKonus(false),10*60*1000);
+})();
+function renderTon(){const t=(P&&P.ton)||"zorba";document.querySelectorAll("#tonSeg button").forEach(b=>b.classList.toggle("on",b.dataset.t===t));}
+$("tonSeg").onclick=e=>{const b=e.target.closest("button");if(!b||!P)return;P.ton=b.dataset.t;ls.set("kepce-profile",P);renderTon();
+  const m=msgDay();m.key="";msgSave(m);toast(P.ton==="zorba"?"😏 Kepçe artık zorba":"😇 Kepçe artık tatlı");};
+renderTon();
 
 // nav
 document.querySelector("nav").onclick=e=>{const b=e.target.closest("button");if(!b)return;
