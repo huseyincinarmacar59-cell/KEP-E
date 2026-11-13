@@ -1,5 +1,5 @@
 // Kepçe service worker: uygulamayı önbelleğe alır, internet/sunucu yokken de açılsın.
-const CACHE = "kepce-v7";
+const CACHE = "kepce-v8";
 const DOSYALAR = ["./", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png", "./apple-touch-icon.png"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(DOSYALAR))); self.skipWaiting(); });
 self.addEventListener("activate", e => {
