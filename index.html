@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#d9572b">
+<meta name="theme-color" content="#FBF1E4">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -173,7 +173,8 @@
   body{background:#FBF1E4;overflow-x:hidden}
   .blobs{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
   .blobs i{position:absolute;border-radius:50%;filter:blur(48px);opacity:.55;animation:drift 12s ease-in-out infinite}
-  .blobs i:nth-child(1){width:300px;height:300px;left:-90px;top:-40px;background:#FF8D28}
+  .blobs i:nth-child(1){width:300px;height:300px;left:-90px;top:70px;background:#FF8D28}
+  .blobs::before{content:"";position:absolute;left:0;right:0;top:0;height:90px;background:linear-gradient(#FBF1E4,rgba(251,241,228,0));z-index:1}
   .blobs i:nth-child(2){width:280px;height:280px;right:-100px;top:300px;background:#FFCC00;opacity:.45;animation-duration:15s;animation-direction:reverse}
   .blobs i:nth-child(3){width:300px;height:300px;left:-80px;top:620px;background:#FF5E7A;opacity:.3;animation-duration:17s}
   .blobs i:nth-child(4){width:260px;height:260px;right:-80px;bottom:-40px;background:#F2A65A;opacity:.5;animation-duration:13s}
@@ -218,7 +219,7 @@
   .vrow .k{min-width:44px;text-align:right;font-weight:800;color:var(--accent);font-size:14px}
   .vrow .x{border:none;background:none;font-size:18px;color:var(--muted);cursor:pointer;padding:4px}
   /* İncebel */
-  .incebel{position:relative;display:flex;flex-direction:column;align-items:center;margin:0 0 14px}
+  .incebel{position:relative;display:flex;flex-direction:column;align-items:center;margin:10px 0 14px}
   .cay{background:none;border:none;padding:0;cursor:pointer;animation:bob 3.2s ease-in-out infinite;-webkit-tap-highlight-color:transparent}
   .cay svg{display:block;overflow:visible}
   .duo{display:flex;justify-content:center;align-items:flex-end;gap:6px}
