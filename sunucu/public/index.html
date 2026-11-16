@@ -264,6 +264,51 @@
   .incebel .bubble span{font-size:15px;font-weight:700;line-height:1.35}
   @keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
   @media (prefers-reduced-transparency: reduce){.lg,.card,.daynav,.food,.chip,.search,.photo-btn,.move,.sheet,nav .in{background:#fff!important;-webkit-backdrop-filter:none;backdrop-filter:none}}
+
+  /* === Çizim teması: turuncu kırmızı yeşil mavi === */
+  :root{--o:#FF8D28;--r:#FF383C;--g:#34C759;--b:#0088FF;--ink2:#1E2A3A}
+  body{background:#FBF4EA!important}
+  .blobs{display:none}
+  .c-o{--c:var(--o)}.c-r{--c:var(--r)}.c-g{--c:var(--g)}.c-b{--c:var(--b)}
+  .sk-hide{display:none}
+  .sk-top{display:flex;align-items:center;gap:12px;margin:8px 0 26px}
+  .sk-mascot{flex-shrink:0;width:84px;height:84px;display:grid;place-items:center;background:#fff;border:2.5px solid var(--ink2);border-radius:18px 18px 34px 18px;box-shadow:4px 4px 0 var(--o)}
+  .sk-msg{flex:1;min-width:0;border-top:2.5px solid var(--ink2);border-bottom:2.5px solid var(--ink2);padding:10px 2px;font-size:14.5px;font-weight:700;line-height:1.35;color:var(--ink2);background:repeating-linear-gradient(transparent 0 calc(1.35em - 2px),rgba(30,42,58,.0) 0)}
+  .sk-brand{align-self:flex-start;font-weight:900;font-size:13px;color:var(--o);letter-spacing:.5px}
+  .sk-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:34px}
+  .sk-day{display:inline-flex;align-items:center;gap:2px;border:2.5px solid var(--ink2);border-radius:22px;padding:2px;background:#fff}
+  .sk-day button{width:30px;height:30px;border:none;border-radius:15px;background:none;font-size:22px;font-weight:900;color:var(--ink2);cursor:pointer;line-height:1}
+  .sk-day button:disabled{opacity:.25}
+  .sk-day span{font-weight:800;font-size:14px;padding:0 4px;white-space:nowrap;color:var(--ink2)}
+  .sk-kcal{display:flex;align-items:baseline;gap:4px;margin:14px 0 12px;color:var(--ink2)}
+  .sk-kcal b{font-size:46px;font-weight:900;line-height:1;color:var(--o)}
+  .sk-kcal span{font-size:16px;font-weight:800}
+  .sk-right{padding-top:4px}
+  .sk-row{display:flex;align-items:baseline;gap:6px;padding:9px 0;font-size:15px}
+  .sk-row span{font-weight:800;color:var(--c)}
+  .sk-row i{flex:1;border-bottom:2.5px dotted rgba(30,42,58,.35);transform:translateY(-3px)}
+  .sk-row b{font-weight:900;color:var(--ink2)}
+  .sk-sec{margin-bottom:34px}
+  .sk-h{font-size:19px;font-weight:900;color:var(--ink2);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .sk-h::before{content:"";width:10px;height:10px;border-radius:5px;background:var(--c)}
+  .sk-plan{list-style:none;padding:0}
+  .sk-plan li{display:flex;gap:10px;padding:10px 0;border-bottom:2px dotted rgba(30,42,58,.22);font-size:14.5px;line-height:1.4}
+  .sk-plan li .e{flex-shrink:0}
+  .sk-log .log-item{background:none!important;border:none!important;box-shadow:none!important;border-bottom:2px dotted rgba(30,42,58,.22)!important;border-radius:0!important;padding:11px 0!important;margin:0!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  .sk-log .kcal{color:var(--r)!important;font-weight:900}
+  .sk-week .col .b{border-radius:8px 8px 3px 3px}
+  .sk-week .col:nth-child(4n+1) .b{background:var(--o)}
+  .sk-week .col:nth-child(4n+2) .b{background:var(--r)}
+  .sk-week .col:nth-child(4n+3) .b{background:var(--g)}
+  .sk-week .col:nth-child(4n) .b{background:var(--b)}
+  .sk-week .col .b.z{background:rgba(30,42,58,.12)!important}
+  .sk-week .col.sel span{color:var(--ink2);font-weight:900;text-decoration:underline}
+  nav .in{background:transparent!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none!important;border:none!important;align-items:center;justify-content:center;gap:0}
+  nav .in button.sk-nl,nav .in button.sk-nr{flex:0 0 110px;height:58px;display:grid;place-items:center;background:#fff!important;border:2.5px solid var(--ink2)!important;color:var(--ink2)!important;box-shadow:none!important}
+  nav .in button.sk-nl{border-radius:29px 0 0 29px!important;border-right:none!important}
+  nav .in button.sk-nr{border-radius:0 29px 29px 0!important;border-left:none!important}
+  nav .in button.sk-nl.on{color:var(--o)!important}nav .in button.sk-nr.on{color:var(--b)!important}
+  nav .in button.navplus{flex:0 0 72px!important;height:72px!important;border-radius:36px!important;margin:0 -6px!important;z-index:2;background:var(--o)!important;border:2.5px solid var(--ink2)!important;box-shadow:0 4px 0 var(--ink2)!important}
 </style>
 </head>
 <body>
@@ -301,64 +346,40 @@
 
   <!-- BUGÜN -->
   <section class="view on" id="v-home">
-    <div class="kbar">
-      <button class="cay" id="kepceMaskot" aria-label="Kepçe maskotu. Dokun, konuşsun.">
-      <svg viewBox="0 0 230 240" width="64" height="67" aria-hidden="true">
-  <defs>
-    <linearGradient id="kSteel3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8E9399"/><stop offset=".4" stop-color="#F2F4F6"/><stop offset=".6" stop-color="#FFFFFF"/><stop offset="1" stop-color="#8E9399"/></linearGradient>
-    <radialGradient id="kBowl3" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".45" stop-color="#D5D9DE"/><stop offset="1" stop-color="#7D838A"/></radialGradient>
-    <radialGradient id="kSoup3" cx=".45" cy=".35" r=".7"><stop offset="0" stop-color="#FFB25C"/><stop offset=".7" stop-color="#F08A2C"/><stop offset="1" stop-color="#D96A16"/></radialGradient>
-  </defs>
-  <ellipse cx="105" cy="232" rx="70" ry="6" fill="#7A3A10" opacity=".14"/>
-  <g>
-    <path d="M150 128 L196 30" stroke="#6E747B" stroke-width="15" stroke-linecap="round"/>
-    <path d="M150 128 L196 30" stroke="url(#kSteel3)" stroke-width="11" stroke-linecap="round"/>
-    <path d="M190 18 C200 -2 228 10 220 30 L206 58 C198 70 180 62 184 48 Z" fill="url(#kSteel3)" stroke="#6E747B" stroke-width="2.5" stroke-linejoin="round"/>
-    <ellipse cx="206" cy="26" rx="6.5" ry="8" transform="rotate(25 206 26)" fill="#FBF1E4" stroke="#6E747B" stroke-width="2"/>
-    <path d="M193 26 C196 16 204 12 210 13" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".9"/>
-    <path d="M158 112 L190 44" stroke="#fff" stroke-width="2.6" stroke-linecap="round" opacity=".9"/>
-    <circle cx="160" cy="110" r="3" fill="#B8BDC2" stroke="#6E747B" stroke-width="1"/>
-  </g>
-  <path d="M25 134 C25 186 61 224 105 224 C149 224 185 186 185 134 Z" fill="url(#kBowl3)" stroke="#7D838A" stroke-width="2.5"/>
-  <ellipse cx="105" cy="134" rx="80" ry="20" fill="#9AA0A6"/>
-  <ellipse cx="105" cy="134" rx="80" ry="20" fill="none" stroke="url(#kSteel3)" stroke-width="5"/>
-  <ellipse cx="105" cy="136" rx="72" ry="15" fill="url(#kSoup3)"/>
-  <circle cx="81" cy="134" r="3" fill="#FFD9A8"/><circle cx="119" cy="138" r="2.4" fill="#FFD9A8"/><circle cx="135" cy="132" r="2" fill="#FFD9A8"/>
-  <path d="M55 130 Q79 122 105 126" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".55"/>
-  <path d="M41 150 C43 180 61 202 83 212" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".8"/>
-  <g class="steam">
-    <path d="M77 102 C71 90 85 84 79 72" fill="none" stroke="#C9A98C" stroke-width="6" stroke-linecap="round" opacity=".7"/>
-    <path d="M107 100 C101 88 115 82 109 70" fill="none" stroke="#C9A98C" stroke-width="6" stroke-linecap="round" opacity=".7"/>
-  </g>
-  <path d="M69 158 Q79 150 91 155" fill="none" stroke="#2B1208" stroke-width="5" stroke-linecap="round"/>
-  <path d="M119 160 Q131 159 141 163" fill="none" stroke="#2B1208" stroke-width="5" stroke-linecap="round"/>
-  <g class="eyes" style="transform-origin:107px 177px">
-    <ellipse cx="83" cy="176" rx="11" ry="12.5" fill="#fff"/><ellipse cx="129" cy="177" rx="11" ry="10" fill="#fff"/>
-    <circle cx="86" cy="178" r="6.5" fill="#1C1C1E"/><circle cx="132" cy="178.5" r="6" fill="#1C1C1E"/>
-    <circle cx="88.5" cy="174.5" r="2.4" fill="#fff"/><circle cx="134.5" cy="175.5" r="2.2" fill="#fff"/>
-    <path d="M117 171 L142 169" stroke="#4A4F55" stroke-width="3" stroke-linecap="round" opacity=".6"/>
-  </g>
-  <ellipse cx="65" cy="196" rx="8" ry="4.5" fill="#FF7A95" opacity=".5"/><ellipse cx="147" cy="196" rx="8" ry="4.5" fill="#FF7A95" opacity=".5"/>
-  <path d="M91 198 Q109 214 125 192 Q109 204 91 198 Z" fill="#2B1208" stroke="#2B1208" stroke-width="3" stroke-linejoin="round"/>
-  <path d="M98 201 L117 198 L115 203 L100 205 Z" fill="#fff"/>
-</svg>
+    <div class="sk-top">
+      <button class="sk-mascot cay" id="kepceMaskot" aria-label="Kepçe maskotu. Dokun, konuşsun.">
+        <svg viewBox="0 0 120 120" width="70" height="70" aria-hidden="true">
+          <path d="M70 58 L104 12" stroke="#1E2A3A" stroke-width="13" stroke-linecap="round"/>
+          <path d="M70 58 L104 12" stroke="#0088FF" stroke-width="8" stroke-linecap="round"/>
+          <circle cx="104" cy="12" r="7" fill="#0088FF" stroke="#1E2A3A" stroke-width="3"/>
+          <path d="M8 62 C8 92 26 112 50 112 C74 112 92 92 92 62 Z" fill="#FF8D28" stroke="#1E2A3A" stroke-width="3.5" stroke-linejoin="round"/>
+          <ellipse cx="50" cy="62" rx="42" ry="10" fill="#FFB466" stroke="#1E2A3A" stroke-width="3.5"/>
+          <circle cx="40" cy="61" r="2.6" fill="#34C759"/><circle cx="60" cy="63" r="2.2" fill="#34C759"/>
+          <g class="eyes" style="transform-origin:50px 84px">
+            <circle cx="36" cy="84" r="5" fill="#1E2A3A"/><circle cx="64" cy="84" r="5" fill="#1E2A3A"/>
+            <circle cx="37.6" cy="82.4" r="1.7" fill="#fff"/><circle cx="65.6" cy="82.4" r="1.7" fill="#fff"/>
+          </g>
+          <ellipse cx="25" cy="95" rx="6" ry="3.5" fill="#FF383C" opacity=".55"/><ellipse cx="75" cy="95" rx="6" ry="3.5" fill="#FF383C" opacity=".55"/>
+          <path d="M42 96 Q50 104 58 96" fill="none" stroke="#1E2A3A" stroke-width="3.5" stroke-linecap="round"/>
+        </svg>
       </button>
-      <div class="bubble lg"><b id="incebelAd">KEPÇE</b><span id="incebelMsg">Selam! Bugün ne yediğini yazarsan ben de susarım. Belki.</span></div>
+      <div class="sk-msg"><b id="incebelAd" class="sk-hide">KEPÇE</b><span id="incebelMsg">Selam! Bugün ne yediğini yazarsan ben de susarım. Belki.</span></div>
+      <span class="sk-brand">kepçe</span>
     </div>
     <div class="pastbar" id="pastBar" style="display:none">📅 <span id="pastTxt"></span> kayıtlarını görüyorsun · <b id="backToday">Bugüne dön</b></div>
-    <div class="card hero">
-      <div class="herotop">
-        <div class="daypill"><button id="dPrev" aria-label="Önceki gün">‹</button><span id="dLbl"></span><button id="dNext" aria-label="Sonraki gün">›</button></div>
-        <div class="kbig2"><b id="heroK">0</b><span>kcal</span></div>
+
+    <div class="sk-grid">
+      <div class="sk-left">
+        <div class="sk-day"><button id="dPrev" aria-label="Önceki gün">‹</button><span id="dLbl"></span><button id="dNext" aria-label="Sonraki gün">›</button></div>
+        <div class="sk-kcal"><b id="heroK">0</b><span>kcal</span></div>
+        <div id="hero"></div>
       </div>
-      <div id="hero"></div>
+      <div class="sk-right" id="heroMeals"></div>
     </div>
 
-    <button class="voice-btn lg" id="voiceHome"><span class="e">🎤</span><span><b>Bugün ne yedin? Sesle söyle</b><span class="muted">"Kahvaltıda simit ve çay, öğlen mercimek çorbası..."</span></span></button>
-
-    <div class="card">
-      <h2>🎯 Yapman gerekenler</h2>
-      <ul class="plan" id="plan"></ul>
+    <div class="sk-sec">
+      <h2 class="sk-h c-o">Yapman gerekenler</h2>
+      <ul class="plan sk-plan" id="plan"></ul>
       <div id="planWarn"></div>
     </div>
 
@@ -368,16 +389,15 @@
       <div id="moves"></div>
     </div>
 
-    <div class="card">
-      <h2>📋 <span class="dword">Bugün</span> yediklerin</h2>
-      <div id="log"></div>
+    <div class="sk-sec">
+      <h2 class="sk-h c-r"><span class="dword">Bugün</span> yenenler</h2>
+      <div id="log" class="sk-log"></div>
     </div>
 
-    <div class="card">
-      <h2>📅 Son 7 gün</h2>
-      <p class="muted" style="margin-bottom:6px">Bir güne dokun, o günün kayıtlarını aç.</p>
-      <div class="week" id="hist"></div>
-      <div class="muted" id="histAvg" style="text-align:center;margin-top:8px"></div>
+    <div class="sk-sec">
+      <h2 class="sk-h c-b">Son 7 gün</h2>
+      <div class="week sk-week" id="hist"></div>
+      <div class="muted" id="histAvg" style="text-align:center;margin-top:8px;font-size:13px"></div>
     </div>
   </section>
 
@@ -442,9 +462,9 @@
 </div>
 
 <nav><div class="in">
-  <button class="on" data-v="home"><span class="e">🏠</span>Bugün</button>
+  <button class="on sk-nl" data-v="home" aria-label="Bugün"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M3 11 12 3l9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg></button>
   <button data-v="add" class="navplus" aria-label="Ekle"><span class="e">＋</span></button>
-  <button data-v="profile"><span class="e">👤</span>Profil</button>
+  <button class="sk-nr" data-v="profile" aria-label="Profil"><svg viewBox="0 0 24 24" width="26" height="26"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M4 21c1-4.5 4.5-6.5 8-6.5s7 2 8 6.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
 </div></nav>
 
 <!-- Yemek ekleme -->
@@ -629,15 +649,10 @@ function render(){
   const hi=P.name?`Selam ${esc(P.name)} 👋`:"Bugün";
   const tgt=C.adult&&C.target?C.target:null;
   $("heroK").textContent=eaten;
-  $("hero").innerHTML=`<div class="herosub">${hi} · ${tgt?`hedef ${tgt} kcal (yaklaşık)`:"yediklerin (yaklaşık)"}</div>
-    ${tgt?`<div class="bar"><i style="width:${Math.min(100,eaten/tgt*100)}%"></i></div>`:""}
-    <div class="stats4">
-      <div class="stat"><b>${tgt?Math.max(0,tgt-eaten):"–"}</b><span>kalan</span></div>
-      <div class="stat"><b>${mac("mp")}g</b><span>protein</span></div>
-      <div class="stat"><b>${mac("mk")}g</b><span>karb.</span></div>
-      <div class="stat"><b>${mac("my")}g</b><span>yağ</span></div>
-    </div>
-    <div class="meals">${mealPills()}</div>`;
+  const row=(c,l,v)=>`<div class="sk-row ${c}"><span>${l}</span><i></i><b>${v}</b></div>`;
+  $("hero").innerHTML=row("c-o","Kalan",tgt?Math.max(0,tgt-eaten):"–")+row("c-r","Protein",mac("mp")+" g")+row("c-b","Karb",mac("mk")+" g")+row("c-g","Yağ",mac("my")+" g");
+  const MC={"Kahvaltı":"c-o","Öğle":"c-g","Akşam":"c-b","Ara":"c-r"};
+  $("heroMeals").innerHTML=MEALS.map(m=>row(MC[m]||"c-o",m==="Ara öğün"?"Ara":m,S.log.filter(l=>l.meal===m).reduce((a,l)=>a+Math.round(l.k*l.q),0))).join("");
   // plan
   let items=[];
   if(C.adult){
@@ -650,7 +665,7 @@ function render(){
     items.push(["🍽️","Kalori saymak yerine <b>3 ana öğünü</b> atlama, tabağının yarısı sebze ya da salata olsun."]);
     items.push(["🍎","Ara öğünde paketli atıştırmalık yerine meyve, ayran ya da bir avuç kuruyemiş."]);
   }
-  items.push(["📝","Yediklerini her gün yaz. Öğün öğün girmek zor geliyorsa akşam 🎤 ile tek seferde söyle."]);
+  items.push(["📝","Yediklerini her gün yaz. Öğün öğün girmek zor geliyorsa akşam ＋ ekranındaki 🎤 ile tek seferde söyle."]);
   items.push(["🥤","Şekerli içecekleri ve paketli atıştırmalıkları azalt, yerine meyve ve ayran."]);
   $("plan").innerHTML=items.map(i=>`<li><span class="e">${i[0]}</span><span>${i[1]}</span></li>`).join("");
   $("planWarn").innerHTML=C.note?`<div class="warn">⚠️ ${C.note}</div>`:
@@ -953,7 +968,7 @@ $("vList").addEventListener("change",e=>{const s=e.target;
   vRender();});
 function vOpen(){$("vStep1").style.display="block";$("vStep2").style.display="none";$("vInterim").textContent="";$("ovV").classList.add("show");}
 function vCloseAll(){vStop();$("ovV").classList.remove("show");}
-$("voiceHome").onclick=vOpen;$("voiceAdd").onclick=vOpen;
+$("voiceAdd").onclick=vOpen;
 $("vClose1").onclick=vCloseAll;$("vClose2").onclick=vCloseAll;
 $("vBack").onclick=()=>{$("vStep2").style.display="none";$("vStep1").style.display="block";};
 $("vClear").onclick=()=>{$("vText").value="";VITEMS=[];$("vStep2").style.display="none";$("vStep1").style.display="block";};
