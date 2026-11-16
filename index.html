@@ -223,6 +223,30 @@
     background:linear-gradient(to bottom,#FBF1E4 0,#FBF1E4 env(safe-area-inset-top),rgba(251,241,228,.75) calc(env(safe-area-inset-top) + 14px),rgba(251,241,228,0) 100%);
     -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
     -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 calc(env(safe-area-inset-top) + 8px),transparent 100%);mask-image:linear-gradient(to bottom,#000 0,#000 calc(env(safe-area-inset-top) + 8px),transparent 100%)}
+  .gizli{display:none!important}
+  .card{margin-bottom:20px!important;padding:18px!important}
+  .app{padding-left:18px!important;padding-right:18px!important}
+  .kbar{display:flex;align-items:center;gap:12px;margin:6px 0 20px}
+  .kbar .cay{flex-shrink:0}
+  .kbar .bubble{flex:1;margin:0;padding:12px 14px;border-radius:20px 20px 20px 6px}
+  .kbar .bubble b{display:block;font-size:12px;color:var(--accent);letter-spacing:.4px;margin-bottom:2px}
+  .kbar .bubble span{font-size:15px;font-weight:700;line-height:1.35}
+  .herotop{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+  .daypill{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.25);border:1px solid rgba(255,255,255,.45);border-radius:22px;padding:4px;box-shadow:inset 0 1px 0 rgba(255,255,255,.5)}
+  .daypill button{width:30px;height:30px;border-radius:15px;flex-shrink:0;border:none;background:rgba(255,255,255,.3);color:#fff;font-size:22px;font-weight:800;cursor:pointer;line-height:1}
+  .daypill button:disabled{opacity:.3}
+  .daypill span{color:#fff;font-weight:800;font-size:14px;padding:0 4px;white-space:nowrap}
+  .daypill{min-width:0;flex-shrink:1}
+  .kbig2{color:#fff;text-align:right;line-height:1}
+  .kbig2{flex-shrink:0;display:flex;align-items:baseline;gap:3px}
+  .kbig2 b{font-size:38px;font-weight:900}.kbig2 span{font-size:14px;font-weight:700;opacity:.9}
+  .stats4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+  .stats4 .stat{padding:10px 4px}
+  .hero .meals{margin-top:12px;gap:10px}
+  .herosub{color:rgba(255,255,255,.9);font-size:13px;font-weight:700}
+  nav .in button.navplus{flex:0 0 64px;align-self:center;height:56px;border-radius:28px;margin:0 8px;padding:0!important;background:linear-gradient(135deg,var(--accent),var(--accent2))!important;color:#fff;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.5),0 6px 16px rgba(217,87,43,.35)}
+  nav .in button.navplus .e{font-size:30px;font-weight:800;margin:0;line-height:1}
+  nav .in button.navplus.on{color:#fff}
   /* İncebel */
   .incebel{position:relative;display:flex;flex-direction:column;align-items:center;margin:10px 0 14px}
   .cay{background:none;border:none;padding:0;cursor:pointer;animation:bob 3.2s ease-in-out infinite;-webkit-tap-highlight-color:transparent}
@@ -270,16 +294,16 @@
 <div class="topfade" aria-hidden="true"></div>
 <div class="blobs" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 <div class="app">
-  <header>
+  <header class="gizli">
     <div class="logo"><div class="ic">🥄</div>Kepçe</div>
-    <div class="date"><div id="today"></div><span class="badge-demo">DEMO</span></div>
+    <div class="date"><div id="today"></div></div>
   </header>
 
   <!-- BUGÜN -->
   <section class="view on" id="v-home">
-    <div class="incebel">
-      <button class="cay" id="kepceMaskot" aria-label="Kepçe maskotu. Dokun, zıplasın.">
-      <svg viewBox="0 0 230 240" width="200" height="209" aria-hidden="true">
+    <div class="kbar">
+      <button class="cay" id="kepceMaskot" aria-label="Kepçe maskotu. Dokun, konuşsun.">
+      <svg viewBox="0 0 230 240" width="64" height="67" aria-hidden="true">
   <defs>
     <linearGradient id="kSteel3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8E9399"/><stop offset=".4" stop-color="#F2F4F6"/><stop offset=".6" stop-color="#FFFFFF"/><stop offset="1" stop-color="#8E9399"/></linearGradient>
     <radialGradient id="kBowl3" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".45" stop-color="#D5D9DE"/><stop offset="1" stop-color="#7D838A"/></radialGradient>
@@ -318,18 +342,19 @@
   <path d="M91 198 Q109 214 125 192 Q109 204 91 198 Z" fill="#2B1208" stroke="#2B1208" stroke-width="3" stroke-linejoin="round"/>
   <path d="M98 201 L117 198 L115 203 L100 205 Z" fill="#fff"/>
 </svg>
-
       </button>
-      <div class="bubble lg"><b id="incebelAd">KEPÇE</b><span id="incebelMsg">Selam! Ben Kepçe. Bugün ne yediğini yazarsan ben de susarım. Belki.</span></div>
+      <div class="bubble lg"><b id="incebelAd">KEPÇE</b><span id="incebelMsg">Selam! Bugün ne yediğini yazarsan ben de susarım. Belki.</span></div>
     </div>
-    <button class="voice-btn lg" id="voiceHome"><span class="e">🎤</span><span><b>Bugün ne yedin? Sesle söyle</b><span class="muted">"Kahvaltıda simit ve çay, öğlen mercimek çorbası..."</span></span></button>
-    <div class="card" id="phoneCard" style="display:none;cursor:pointer;background:#fff6f0;border:2px solid var(--accent2)">
-      <div style="display:flex;align-items:center;gap:12px"><span style="font-size:32px">📱</span>
-      <div style="flex:1"><b>Telefonuna kur</b><div class="muted">QR kodu telefonunla okut, ana ekrana ekle</div></div><span style="font-size:20px">›</span></div>
-    </div>
-    <div class="daynav"><button id="dPrev" aria-label="Önceki gün">‹</button><div id="dLbl"></div><button id="dNext" aria-label="Sonraki gün">›</button></div>
     <div class="pastbar" id="pastBar" style="display:none">📅 <span id="pastTxt"></span> kayıtlarını görüyorsun · <b id="backToday">Bugüne dön</b></div>
-    <div class="card hero" id="hero"></div>
+    <div class="card hero">
+      <div class="herotop">
+        <div class="daypill"><button id="dPrev" aria-label="Önceki gün">‹</button><span id="dLbl"></span><button id="dNext" aria-label="Sonraki gün">›</button></div>
+        <div class="kbig2"><b id="heroK">0</b><span>kcal</span></div>
+      </div>
+      <div id="hero"></div>
+    </div>
+
+    <button class="voice-btn lg" id="voiceHome"><span class="e">🎤</span><span><b>Bugün ne yedin? Sesle söyle</b><span class="muted">"Kahvaltıda simit ve çay, öğlen mercimek çorbası..."</span></span></button>
 
     <div class="card">
       <h2>🎯 Yapman gerekenler</h2>
@@ -337,14 +362,9 @@
       <div id="planWarn"></div>
     </div>
 
-    <div class="card">
-      <h2>💧 Su <span class="muted" id="waterTxt"></span></h2>
-      <div class="glasses" id="glasses"></div>
-      <div class="muted">Bardağa dokun, içtiğin suyu işaretle.</div>
-    </div>
-
-    <div class="card">
-      <h2>🚶 Günün mini hedefleri</h2>
+    <div class="gizli">
+      <div class="card" id="phoneCard"></div>
+      <div class="glasses" id="glasses"></div><span id="waterTxt"></span>
       <div id="moves"></div>
     </div>
 
@@ -364,7 +384,7 @@
   <!-- EKLE -->
   <section class="view" id="v-add">
     <button class="voice-btn lg" id="voiceAdd"><span class="e">🎤</span><span><b>Sesle ekle</b><span class="muted">Bütün gününü tek seferde söyle, Kepçe öğünlere ayırsın</span></span></button>
-    <button class="photo-btn" id="photoBtn"><span class="e">📸</span><span><b>Tabağının fotoğrafını çek</b><span class="muted">Yapay zekâ yemekleri tanısın, kaloriyi tahmin etsin</span></span></button>
+    <button class="photo-btn gizli" id="photoBtn"><span class="e">📸</span><span><b>Tabağının fotoğrafını çek</b><span class="muted">Yapay zekâ yemekleri tanısın, kaloriyi tahmin etsin</span></span></button>
     <input type="file" id="photoIn" accept="image/*" capture="environment" hidden>
     <div class="sbox"><input class="search" id="q" placeholder="🔍 Yemek ara: mercimek, lahmacun, iskender..." autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="search"><button id="qClear" class="qclear" aria-label="Temizle">×</button></div>
     <div class="chips" id="cats"></div>
@@ -375,7 +395,7 @@
   </section>
 
   <!-- SPOR -->
-  <section class="view" id="v-sport">
+  <section class="view gizli" id="v-sport">
     <div class="card">
       <h2>🏃 <span class="dword">Bugün</span> spor</h2>
       <div style="display:flex;gap:10px">
@@ -415,7 +435,7 @@
       <div class="badges" id="badges"></div>
     </div>
     <div class="card">
-      <h2>ℹ️ Bu demo hakkında</h2>
+      <h2>ℹ️ Kepçe hakkında</h2>
       <p class="muted" style="line-height:1.6">Kepçe, Türk mutfağını ev ölçüleriyle takip etmen ve sağlıklı alışkanlıklar kazanman için tasarlandı. Hesaplamalar genel formüllere dayanan tahminlerdir; tıbbi tavsiye değildir. Sağlık hedeflerin için bir doktora ya da diyetisyene danışman en doğrusu.</p>
     </div>
   </section>
@@ -423,8 +443,7 @@
 
 <nav><div class="in">
   <button class="on" data-v="home"><span class="e">🏠</span>Bugün</button>
-  <button data-v="add"><span class="e">➕</span>Ekle</button>
-  <button data-v="sport"><span class="e">🏃</span>Spor</button>
+  <button data-v="add" class="navplus" aria-label="Ekle"><span class="e">＋</span></button>
   <button data-v="profile"><span class="e">👤</span>Profil</button>
 </div></nav>
 
@@ -596,7 +615,7 @@ $("oSave").onclick=()=>{
 function render(){
   if(!P) return;
   const td=isToday();
-  $("dLbl").textContent=dayName(viewDate)+(td?" · "+viewDate.toLocaleDateString("tr-TR",{day:"numeric",month:"long"}):"");
+  $("dLbl").textContent=td?"Bugün · "+viewDate.toLocaleDateString("tr-TR",{day:"numeric",month:"short"}):(dayName(viewDate)==="Dün"?"Dün":viewDate.toLocaleDateString("tr-TR",{day:"numeric",month:"short",weekday:"short"}));
   $("dNext").disabled=td;
   $("pastBar").style.display=td?"none":"block";$("pastTxt").textContent=dayName(viewDate);
   document.querySelectorAll(".dword").forEach(e=>e.textContent=td?"Bugün":dayName(viewDate));
@@ -608,17 +627,17 @@ function render(){
   const burned=S.sport.reduce((a,s)=>a+s.kcal,0);
   const spMin=S.sport.reduce((a,s)=>a+s.min,0);
   const hi=P.name?`Selam ${esc(P.name)} 👋`:"Bugün";
-  if(C.adult&&C.target){
-    const pct=Math.min(100,eaten/C.target*100);
-    $("hero").innerHTML=`<div class="row"><div><div class="muted">${hi} · yediklerin</div><div class="big">${eaten}</div><div class="muted">/ ${C.target} kcal hedef (yaklaşık)</div></div><div style="font-size:48px">🍲</div></div>
-      <div class="bar"><i style="width:${pct}%"></i></div>
-      <div class="stats3"><div class="stat"><b>${Math.max(0,C.target-eaten)}</b><span>kalan</span></div><div class="stat"><b>${burned}</b><span>sporla yakılan</span></div><div class="stat"><b>${S.water}/${C.water}</b><span>bardak su</span></div></div>
-      ${macHtml}<div class="meals">${mealPills()}</div>`;
-  } else {
-    $("hero").innerHTML=`<div class="row"><div><div class="muted">${hi} · yediklerin</div><div class="big">${eaten}</div><div class="muted">kcal (yaklaşık)</div></div><div style="font-size:48px">🍲</div></div>
-      <div class="stats3"><div class="stat"><b>${spMin}</b><span>dk spor</span></div><div class="stat"><b>${S.water}/${C.water}</b><span>bardak su</span></div><div class="stat"><b>${S.moves.filter(Boolean).length}/3</b><span>mini hedef</span></div></div>
-      ${macHtml}<div class="meals">${mealPills()}</div>`;
-  }
+  const tgt=C.adult&&C.target?C.target:null;
+  $("heroK").textContent=eaten;
+  $("hero").innerHTML=`<div class="herosub">${hi} · ${tgt?`hedef ${tgt} kcal (yaklaşık)`:"yediklerin (yaklaşık)"}</div>
+    ${tgt?`<div class="bar"><i style="width:${Math.min(100,eaten/tgt*100)}%"></i></div>`:""}
+    <div class="stats4">
+      <div class="stat"><b>${tgt?Math.max(0,tgt-eaten):"–"}</b><span>kalan</span></div>
+      <div class="stat"><b>${mac("mp")}g</b><span>protein</span></div>
+      <div class="stat"><b>${mac("mk")}g</b><span>karb.</span></div>
+      <div class="stat"><b>${mac("my")}g</b><span>yağ</span></div>
+    </div>
+    <div class="meals">${mealPills()}</div>`;
   // plan
   let items=[];
   if(C.adult){
@@ -626,13 +645,12 @@ function render(){
     if(P.goal==="ver"&&!C.note) items.push(["🍽️",`Günde yaklaşık <b>${C.target} kcal</b> hedefle. Haftada 0,25–0,5 kg vermek sağlıklı bir hızdır, acele etme.`]);
     else if(P.goal==="al") items.push(["🍽️",`Günde yaklaşık <b>${C.target} kcal</b> hedefle. Proteinli ev yemekleri ve ara öğünler ekle.`]);
     else items.push(["🍽️",`Kilonu korumak için günde yaklaşık <b>${C.target} kcal</b> yeterli.`]);
-    items.push(["🏃",`Haftada en az <b>150 dakika</b> orta tempolu hareket et (günde ~20-30 dk).`]);
+    items.push(["🥗","Tabağının yarısını sebze ya da salatayla doldur, ekmeği ve pilavı ölçülü tut."]);
   } else {
     items.push(["🍽️","Kalori saymak yerine <b>3 ana öğünü</b> atlama, tabağının yarısı sebze ya da salata olsun."]);
-    items.push(["🏃","Her gün en az <b>60 dakika</b> hareket et: futbol, basketbol, bisiklet, yürüyüş, ne seversen."]);
-    items.push(["😴","Gece <b>8-10 saat</b> uyu, büyüme ve enerji için çok önemli."]);
+    items.push(["🍎","Ara öğünde paketli atıştırmalık yerine meyve, ayran ya da bir avuç kuruyemiş."]);
   }
-  items.push(["💧",`Günde <b>${C.water} bardak</b> su iç.`]);
+  items.push(["📝","Yediklerini her gün yaz. Öğün öğün girmek zor geliyorsa akşam 🎤 ile tek seferde söyle."]);
   items.push(["🥤","Şekerli içecekleri ve paketli atıştırmalıkları azalt, yerine meyve ve ayran."]);
   $("plan").innerHTML=items.map(i=>`<li><span class="e">${i[0]}</span><span>${i[1]}</span></li>`).join("");
   $("planWarn").innerHTML=C.note?`<div class="warn">⚠️ ${C.note}</div>`:
@@ -679,9 +697,9 @@ function renderProfile(C){
   $("profile").innerHTML=(P.name?`<div class="prow"><span>Ad</span><b>${esc(P.name)}</b></div>`:"")+rows.map(r=>`<div class="prow"><span>${r[0]}</span><b>${r[1]}</b></div>`).join("");
 }
 function renderBadges(C){
-  const B=[["🥄","İlk kayıt",S.log.length>=1],["💧","Su hedefi",S.water>=C.water],["🚶","Mini hedefler",S.moves.every(Boolean)],
+  const B=[["🥄","İlk kayıt",S.log.length>=1],
     ["🥗","3 farklı öğün",new Set(S.log.map(l=>l.meal)).size>=3],["🍎","Meyve günü",S.log.some(l=>l.c==="Meyve")],
-    ["📸","Foto analiz",S.log.some(l=>l.ai)],["🏃","İlk antrenman",S.sport.length>=1],["🔥","30 dk spor",S.sport.reduce((a,s)=>a+s.min,0)>=30],["🫘","Ev yemeği",S.log.some(l=>["Ana Yemek","Sebze Yemeği","Çorba","Pilav & Makarna"].includes(l.c))]];
+    ["🎤","Sesle ekleme",S.log.length>=3],["🍲","Çorba günü",S.log.some(l=>l.c==="Çorba")],["🥗","Salata",S.log.some(l=>l.c==="Salata & Meze")],["🫘","Ev yemeği",S.log.some(l=>["Ana Yemek","Sebze Yemeği","Çorba","Pilav & Makarna"].includes(l.c))]];
   $("badges").innerHTML=B.map(b=>`<div class="bdg ${b[2]?'on':''}"><div class="e">${b[0]}</div><b>${b[1]}</b></div>`).join("");
 }
 
@@ -1127,8 +1145,6 @@ function durum(){
   if(h>=21&&!has("Akşam")) return "aksam";
   if(h>=14&&!has("Öğle")) return "ogle";
   if(h>=11&&!has("Kahvaltı")&&!S.log.length) return "kahvalti";
-  if(h>=15&&S.water<C.water/2) return "su";
-  if(h>=18&&!S.sport.length&&!S.moves.some(Boolean)) return "hareket";
   if(!S.log.length&&h<11) return "sabah";
   return "iyi";
 }

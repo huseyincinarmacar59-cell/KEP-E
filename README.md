@@ -1,6 +1,6 @@
 # 🥄 Kepçe
 
-Türk mutfağına özel, ev ölçüleriyle (kepçe, dilim, adet) çalışan sağlıklı yaşam takip uygulaması — demo.
+Türk mutfağına özel, ev ölçüleriyle (kepçe, dilim, adet) çalışan sağlıklı yaşam takip uygulaması.
 
 **Canlı:** https://huseyincinarmacar59-cell.github.io/KEP-E/
 
